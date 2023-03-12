@@ -1,6 +1,7 @@
+import MovieCard from "./components/MovieCard";
 import { useGetMovies } from "./hooks/useGetMovies";
 
-export function App() {
+export default function App() {
   const { movies, isLoading } = useGetMovies();
 
   return (
@@ -14,14 +15,7 @@ export function App() {
         ) : (
           <ul className="grid grid-cols-custom gap-2">
             {movies.map((movie) => (
-              <li key={movie.id}>
-                <img
-                  src={`https://image.tmdb.org/t/p/w500${movie.image}`}
-                  alt={movie.title}
-                />
-                <h2 className="font-bold">{movie.title}</h2>
-                <p>{movie.description}</p>
-              </li>
+              <MovieCard key={movie.id} {...movie} />
             ))}
           </ul>
         )}
