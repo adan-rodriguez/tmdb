@@ -16,5 +16,6 @@ export default function useGetMovie() {
     setIsLoading(true);
     obtainMovie().then(() => setIsLoading(false));
   }, []);
+
   return { ...movie, isLoading };
 }

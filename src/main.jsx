@@ -5,7 +5,9 @@ import App from "./App";
 import ErrorPage from "./ErrorPage";
 import "./index.css";
 import RootLayout from "./layout";
+import GenderPage from "./pages/GenderPage";
 import MoviePage from "./pages/MoviePage";
+import SearchPage from "./pages/SearchPage";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +21,14 @@ const router = createBrowserRouter([
       {
         path: "movies/:movieId",
         element: <MoviePage />,
+      },
+      {
+        path: "genres/:genderId",
+        element: <GenderPage />,
+      },
+      {
+        path: "search/:query",
+        element: <SearchPage />,
       },
     ],
   },

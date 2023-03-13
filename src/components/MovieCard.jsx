@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function MovieCard({ id, image, title, description }) {
+export default function MovieCard({ id, image, title }) {
   return (
     <Link to={`/movies/${id}`}>
       <img
@@ -8,8 +8,6 @@ export default function MovieCard({ id, image, title, description }) {
         alt={title}
         className="hover:scale-105 transition-transform"
       />
-      {/* <h3 className="font-bold">{title}</h3>
-        <p>{description}</p> */}
     </Link>
   );
 }
