@@ -1,25 +1,14 @@
-import MovieCard from "./components/MovieCard";
+import MoviesSection from "./components/MoviesSection";
 import { useGetMovies } from "./hooks/useGetMovies";
 
 export default function App() {
-  const { movies, isLoading } = useGetMovies();
+  const popularMovies = useGetMovies("popular");
+  const topRatedMovies = useGetMovies("top_rated");
 
   return (
     <>
-      <header>
-        <h1 className="text-3xl font-bold underline text-center">TMDB</h1>
-      </header>
-      <main>
-        {isLoading ? (
-          <p>Cargando...</p>
-        ) : (
-          <ul className="grid grid-cols-custom gap-2">
-            {movies.map((movie) => (
-              <MovieCard key={movie.id} {...movie} />
-            ))}
-          </ul>
-        )}
-      </main>
+      <MoviesSection section="Popular Movies" {...popularMovies} />
+      <MoviesSection section="Top Rated Movies" {...topRatedMovies} />
     </>
   );
 }

@@ -4,7 +4,7 @@ export default function MoviePage() {
   const { title, image, description, isLoading } = useGetMovie();
 
   return (
-    <main>
+    <>
       {isLoading ? (
         <p>Cargando...</p>
       ) : (
@@ -14,6 +14,6 @@ export default function MoviePage() {
           <p>{description}</p>
         </div>
       )}
-    </main>
+    </>
   );
 }

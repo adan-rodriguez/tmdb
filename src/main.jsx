@@ -4,17 +4,23 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import ErrorPage from "./ErrorPage";
 import "./index.css";
+import RootLayout from "./layout";
 import MoviePage from "./pages/MoviePage";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <App />,
+    element: <RootLayout />,
     errorElement: <ErrorPage />,
-  },
-  {
-    path: "movies/:movieId",
-    element: <MoviePage />,
+    children: [
+      {
+        path: "/",
+        element: <App />,
+      },
+      {
+        path: "movies/:movieId",
+        element: <MoviePage />,
+      },
+    ],
   },
 ]);
 
