@@ -1,14 +1,33 @@
 import MoviesSection from "./components/MoviesSection";
 import { useGetMovies } from "./hooks/useGetMovies";
+import { useGetPeople } from "./hooks/useGetPeople";
 
 export default function App() {
   const popularMovies = useGetMovies("popular");
   const topRatedMovies = useGetMovies("top_rated");
+  const { people, isLoading } = useGetPeople();
 
   return (
     <>
       <MoviesSection section="Popular Movies" {...popularMovies} />
       <MoviesSection section="Top Rated Movies" {...topRatedMovies} />
+      <section className="overflow-hidden">
+        <h2>Popular Persons</h2>
+        {isLoading ? (
+          <p>Cargando...</p>
+        ) : (
+          <div className="probando2">
+            {people.map((people) => (
+              <img
+                key={people.id}
+                src={`https://image.tmdb.org/t/p/w500${people.image}`}
+                alt={people.name}
+                className="hover:scale-105 transition-transform"
+              />
+            ))}
+          </div>
+        )}
+      </section>
     </>
   );
 }

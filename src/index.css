@@ -34,3 +34,11 @@ ul {
 .probando a {
   min-width: 20%;
 }
+
+.probando2 {
+  display: flex;
+}
+
+.probando2 img {
+  min-width: 20%;
+}
