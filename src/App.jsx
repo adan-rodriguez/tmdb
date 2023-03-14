@@ -1,14 +1,25 @@
 import MoviesSection from "./components/MoviesSection";
 import { useGetMovies } from "./hooks/useGetMovies";
 import { useGetPeople } from "./hooks/useGetPeople";
+import { useGetHomeVideo } from "./hooks/useGetHomeVideo";
 
 export default function App() {
   const popularMovies = useGetMovies("popular");
   const topRatedMovies = useGetMovies("top_rated");
   const { people, isLoading } = useGetPeople();
+  const { officialTrailerId } = useGetHomeVideo(popularMovies.movies[0]?.id);
 
   return (
     <>
+      <iframe
+        className="w-full h-96"
+        src={`https://www.youtube.com/embed/${officialTrailerId}?autoplay=1&controls=0&rel=0&showinfo=0`}
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+      ></iframe>
+
       <MoviesSection section="Popular Movies" {...popularMovies} />
       <MoviesSection section="Top Rated Movies" {...topRatedMovies} />
       <section className="overflow-hidden">
