@@ -4,7 +4,6 @@ import { getVideos } from "../services/videos";
 
 export default function useGetVideos() {
   const [videos, setVideos] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const { movieId } = useParams();
 
   const officialTrailerId = videos.find(
@@ -17,9 +16,8 @@ export default function useGetVideos() {
   };
 
   useEffect(() => {
-    setIsLoading(true);
-    obtainVideos().then(() => setIsLoading(false));
+    obtainVideos();
   }, []);
 
-  return { officialTrailerId, isLoading };
+  return { officialTrailerId };
 }

@@ -3,15 +3,10 @@ import useGetMovie from "../hooks/useGetMovie";
 import useGetVideos from "../hooks/useGetVideos";
 
 export default function MoviePage() {
-  const { title, image, description, genres, isLoading } = useGetMovie();
+  const { title, image, description, genres } = useGetMovie();
   const { officialTrailerId } = useGetVideos();
-  console.log(officialTrailerId);
 
   return (
-    // <>
-    //   {isLoading ? (
-    //     <p>Cargando...</p>
-    //   ) : (
     <div>
       <img src={`https://image.tmdb.org/t/p/w500${image}`} alt={title} />
       <h2 className="font-bold">{title}</h2>
@@ -36,7 +31,5 @@ export default function MoviePage() {
         ></iframe>
       )}
     </div>
-    //   )}
-    // </>
   );
 }

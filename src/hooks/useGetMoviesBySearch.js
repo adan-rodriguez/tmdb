@@ -4,19 +4,16 @@ import { getMovies } from "../services/search";
 
 export function useGetMoviesBySearch() {
   const [movies, setMovies] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const { query } = useParams();
 
   const obtainMovies = async () => {
-    setIsLoading(true);
     const movies = await getMovies(query);
     setMovies(movies);
-    setIsLoading(false);
   };
 
   useEffect(() => {
     obtainMovies();
   }, [query]);
 
-  return { query, movies, isLoading };
+  return { query, movies };
 }

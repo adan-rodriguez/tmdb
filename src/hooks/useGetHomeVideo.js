@@ -3,11 +3,12 @@ import { getVideos } from "../services/videos";
 
 export function useGetHomeVideo(movieId) {
   const [videos, setVideos] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [officialTrailerId, setOfficialTrailerId] = useState("");
 
-  const officialTrailerId = videos?.find(
-    (video) => video.official && video.type === "Trailer"
-  )?.id;
+  const obtainOfficialTrailerId = () =>
+    setOfficialTrailerId(
+      videos?.find((video) => video.official && video.type === "Trailer")?.id
+    );
 
   const obtainVideos = async () => {
     const videos = await getVideos(movieId);
@@ -15,9 +16,12 @@ export function useGetHomeVideo(movieId) {
   };
 
   useEffect(() => {
-    setIsLoading(true);
-    obtainVideos().then(() => setIsLoading(false));
+    obtainVideos();
   }, [movieId]);
 
-  return { officialTrailerId, isLoading };
+  useEffect(() => {
+    obtainOfficialTrailerId();
+  }, [videos]);
+
+  return { officialTrailerId };
 }
