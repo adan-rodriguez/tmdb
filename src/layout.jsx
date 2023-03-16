@@ -10,15 +10,22 @@ export default function RootLayout() {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            navigate(`/search/${e.target.search.value}`);
+            const search = e.target.search.value;
+            e.target.search.value = "";
+            navigate(`/search/${search}`);
           }}
         >
-          <input type="text" name="search" id="search" className="text-black" />
+          <input
+            type="text"
+            name="search"
+            className="text-black"
+            placeholder="Search in TMDB"
+          />
           <button>Search</button>
         </form>
         <Link to="/">Home</Link>
       </header>
-      <main className="max-w-screen-2xl m-auto p-4">
+      <main className="max-w-screen-2xl m-auto">
         <Outlet />
       </main>
     </>

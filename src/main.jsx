@@ -7,7 +7,9 @@ import "./index.css";
 import RootLayout from "./layout";
 import GenderPage from "./pages/GenderPage";
 import MoviePage from "./pages/MoviePage";
+import PopularMoviesPage from "./pages/PopularMoviesPage";
 import SearchPage from "./pages/SearchPage";
+import TopRatedMoviesPage from "./pages/TopRatedMoviesPage";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
       {
         path: "search/:query",
         element: <SearchPage />,
+      },
+      {
+        path: "popular",
+        element: <PopularMoviesPage />,
+      },
+      {
+        path: "top_rated",
+        element: <TopRatedMoviesPage />,
       },
     ],
   },

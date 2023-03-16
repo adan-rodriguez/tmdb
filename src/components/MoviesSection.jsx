@@ -1,9 +1,12 @@
+import { Link } from "react-router-dom";
 import MovieCard from "./MovieCard";
 
-export default function MoviesSection({ section, movies }) {
+export default function MoviesSection({ section, link, movies }) {
   return (
     <section className="overflow-hidden">
-      <h2>{section}</h2>
+      <Link to={`/${link}`}>
+        <h2>{section}</h2>
+      </Link>
       <div className="probando">
         {movies.map((movie) => (
           <MovieCard key={movie.id} {...movie} />

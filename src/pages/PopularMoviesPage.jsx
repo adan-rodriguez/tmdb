@@ -1,12 +1,12 @@
 import MovieCard from "../components/MovieCard";
-import { useGetMoviesByGender } from "../hooks/useGetMoviesByGender";
+import { useGetMovies } from "../hooks/useGetMovies";
 
-export default function GenderPage() {
-  const { gender, movies } = useGetMoviesByGender();
+export default function PopularMoviesPage() {
+  const { movies } = useGetMovies("popular");
 
   return (
     <>
-      <h1>{gender}</h1>
+      <h1>Popular Movies</h1>
       <div className="grid grid-cols-custom">
         {movies.map((movie) => (
           <MovieCard key={movie.id} {...movie} />

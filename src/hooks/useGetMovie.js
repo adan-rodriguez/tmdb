@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getMovie } from "../services/movies";
 
-export default function useGetMovie(id) {
+export function useGetMovie(id) {
   const [movie, setMovie] = useState({});
   const [officialTrailerId, setOfficialTrailerId] = useState("");
   const { movieId } = useParams();

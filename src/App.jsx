@@ -1,7 +1,7 @@
 import MoviesSection from "./components/MoviesSection";
 import { useGetMovies } from "./hooks/useGetMovies";
 import { useGetPeople } from "./hooks/useGetPeople";
-import useGetMovie from "./hooks/useGetMovie";
+import { useGetMovie } from "./hooks/useGetMovie";
 
 export default function App() {
   const { movies: popularMovies } = useGetMovies("popular");
@@ -20,15 +20,23 @@ export default function App() {
         allowFullScreen
       ></iframe>
 
-      <MoviesSection section="Popular Movies" movies={popularMovies} />
-      <MoviesSection section="Top Rated Movies" movies={topRatedMovies} />
+      <MoviesSection
+        section="Popular Movies"
+        link="popular"
+        movies={popularMovies}
+      />
+      <MoviesSection
+        section="Top Rated Movies"
+        link="top_rated"
+        movies={topRatedMovies}
+      />
       <section className="overflow-hidden">
         <h2>Popular Persons</h2>
         <div className="probando2">
           {people.map((people) => (
             <img
               key={people.id}
-              src={`https://image.tmdb.org/t/p/w500${people.image}`}
+              src={`https://image.tmdb.org/t/p/original${people.image}`}
               alt={people.name}
               className="hover:scale-105 transition-transform"
             />

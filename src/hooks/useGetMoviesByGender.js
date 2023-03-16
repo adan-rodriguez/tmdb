@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { getMovies } from "../services/discover";
 import genres from "../utils/genres.json";
 
-export default function useGetMoviesByGender() {
+export function useGetMoviesByGender() {
   const [movies, setMovies] = useState([]);
   const { genderId } = useParams();
 
