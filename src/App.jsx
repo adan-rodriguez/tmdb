@@ -1,13 +1,13 @@
 import MoviesSection from "./components/MoviesSection";
 import { useGetMovies } from "./hooks/useGetMovies";
 import { useGetPeople } from "./hooks/useGetPeople";
-import { useGetHomeVideo } from "./hooks/useGetHomeVideo";
+import useGetMovie from "./hooks/useGetMovie";
 
 export default function App() {
   const { movies: popularMovies } = useGetMovies("popular");
   const { movies: topRatedMovies } = useGetMovies("top_rated");
   const { people } = useGetPeople();
-  const { officialTrailerId } = useGetHomeVideo(popularMovies[0]?.id);
+  const { officialTrailerId } = useGetMovie(popularMovies[0]?.id);
 
   return (
     <>
