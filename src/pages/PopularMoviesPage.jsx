@@ -1,7 +1,7 @@
-import MovieCard from "../components/MovieCard";
+import { MovieCard } from "../components/MovieCard";
 import { useGetMovies } from "../hooks/useGetMovies";
 
-export default function PopularMoviesPage() {
+export function PopularMoviesPage() {
   const { movies } = useGetMovies("popular");
 
   return (

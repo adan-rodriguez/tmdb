@@ -1,9 +1,9 @@
-import MoviesSection from "./components/MoviesSection";
+import { MoviesSection } from "./components/MoviesSection";
 import { useGetMovies } from "./hooks/useGetMovies";
 import { useGetPeople } from "./hooks/useGetPeople";
 import { useGetMovie } from "./hooks/useGetMovie";
 
-export default function App() {
+export function App() {
   const { movies: popularMovies } = useGetMovies("popular");
   const { movies: topRatedMovies } = useGetMovies("top_rated");
   const { people } = useGetPeople();

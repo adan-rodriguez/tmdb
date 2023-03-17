@@ -1,7 +1,7 @@
-import MovieCard from "../components/MovieCard";
+import { MovieCard } from "../components/MovieCard";
 import { useGetMovies } from "../hooks/useGetMovies";
 
-export default function TopRatedMoviesPage() {
+export function TopRatedMoviesPage() {
   const { movies } = useGetMovies("top_rated");
 
   return (

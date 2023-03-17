@@ -1,7 +1,7 @@
-import MovieCard from "../components/MovieCard";
+import { MovieCard } from "../components/MovieCard";
 import { useGetMoviesByGender } from "../hooks/useGetMoviesByGender";
 
-export default function GenderPage() {
+export function GenderPage() {
   const { gender, movies } = useGetMoviesByGender();
 
   return (

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useGetMovie } from "../hooks/useGetMovie";
 
-export default function MoviePage() {
+export function MoviePage() {
   const {
     title,
     image,

@@ -1,15 +1,18 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import App from "./App";
-import ErrorPage from "./ErrorPage";
+import { App } from "./App";
+import { ErrorPage } from "./ErrorPage";
 import "./index.css";
-import RootLayout from "./layout";
-import GenderPage from "./pages/GenderPage";
-import MoviePage from "./pages/MoviePage";
-import PopularMoviesPage from "./pages/PopularMoviesPage";
-import SearchPage from "./pages/SearchPage";
-import TopRatedMoviesPage from "./pages/TopRatedMoviesPage";
+import { RootLayout } from "./layout";
+import { GenderPage } from "./pages/GenderPage";
+import { MoviePage } from "./pages/MoviePage";
+import { PersonPage } from "./pages/PersonPage";
+import { PopularMoviesPage } from "./pages/PopularMoviesPage";
+import { SearchMoviesPage } from "./pages/SearchMoviesPage";
+import { SearchPeoplePage } from "./pages/SearchPeoplePage";
+import { SearchTvShowsPage } from "./pages/SearchTvShowsPage";
+import { TopRatedMoviesPage } from "./pages/TopRatedMoviesPage";
+import { TvShowPage } from "./pages/TvShowPage";
 
 const router = createBrowserRouter([
   {
@@ -25,12 +28,28 @@ const router = createBrowserRouter([
         element: <MoviePage />,
       },
       {
+        path: "people/:personId",
+        element: <PersonPage />,
+      },
+      {
+        path: "tv_shows/:tvShowId",
+        element: <TvShowPage />,
+      },
+      {
         path: "genres/:genderId",
         element: <GenderPage />,
       },
       {
-        path: "search/:query",
-        element: <SearchPage />,
+        path: "search/movies/:query",
+        element: <SearchMoviesPage />,
+      },
+      {
+        path: "search/people/:query",
+        element: <SearchPeoplePage />,
+      },
+      {
+        path: "search/tv_shows/:query",
+        element: <SearchTvShowsPage />,
       },
       {
         path: "popular",

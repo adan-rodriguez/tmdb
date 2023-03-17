@@ -12,3 +12,20 @@ export async function getPeople() {
     image: result.profile_path,
   }));
 }
+
+export async function getPerson(personId) {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/person/${personId}?api_key=${API_KEY_TMDB}`
+  );
+  const data = await response.json();
+  return {
+    name: data.name,
+    image: data.profile_path,
+    biography: data.biography,
+    birthday: data.birthday,
+    deathday: data.deathday,
+    website: data.homepage,
+    known_for: data.known_for_department,
+    place_of_birth: data.place_of_birth,
+  };
+}

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import MovieCard from "./MovieCard";
+import { MovieCard } from "./MovieCard";
 
-export default function MoviesSection({ section, link, movies }) {
+export function MoviesSection({ section, link, movies }) {
   return (
     <section className="overflow-hidden">
       <Link to={`/${link}`}>
