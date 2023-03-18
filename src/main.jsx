@@ -1,16 +1,15 @@
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { App } from "./App";
 import { ErrorPage } from "./ErrorPage";
+import { HomePage } from "./HomePage";
 import "./index.css";
 import { RootLayout } from "./layout";
 import { GenderPage } from "./pages/GenderPage";
 import { MoviePage } from "./pages/MoviePage";
 import { PersonPage } from "./pages/PersonPage";
 import { PopularMoviesPage } from "./pages/PopularMoviesPage";
-import { SearchMoviesPage } from "./pages/SearchMoviesPage";
-import { SearchPeoplePage } from "./pages/SearchPeoplePage";
-import { SearchTvShowsPage } from "./pages/SearchTvShowsPage";
+import { PopularPeoplePage } from "./pages/PopularPeoplePage";
+import { SearchPage } from "./pages/SearchPage";
 import { TopRatedMoviesPage } from "./pages/TopRatedMoviesPage";
 import { TvShowPage } from "./pages/TvShowPage";
 
@@ -21,7 +20,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <App />,
+        element: <HomePage />,
       },
       {
         path: "movies/:movieId",
@@ -36,28 +35,24 @@ const router = createBrowserRouter([
         element: <TvShowPage />,
       },
       {
-        path: "genres/:genderId",
+        path: "genres/:genderName",
         element: <GenderPage />,
       },
       {
-        path: "search/movies/:query",
-        element: <SearchMoviesPage />,
+        path: "search/:type/:query",
+        element: <SearchPage />,
       },
       {
-        path: "search/people/:query",
-        element: <SearchPeoplePage />,
-      },
-      {
-        path: "search/tv_shows/:query",
-        element: <SearchTvShowsPage />,
-      },
-      {
-        path: "popular",
+        path: "movies/popular",
         element: <PopularMoviesPage />,
       },
       {
-        path: "top_rated",
+        path: "movies/top_rated",
         element: <TopRatedMoviesPage />,
+      },
+      {
+        path: "people/popular",
+        element: <PopularPeoplePage />,
       },
     ],
   },

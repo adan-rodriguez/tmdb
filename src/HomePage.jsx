@@ -1,12 +1,12 @@
-import { MoviesSection } from "./components/MoviesSection";
+import { CarouselSection } from "./components/CarouselSection";
 import { useGetMovies } from "./hooks/useGetMovies";
 import { useGetPeople } from "./hooks/useGetPeople";
 import { useGetMovie } from "./hooks/useGetMovie";
 
-export function App() {
+export function HomePage() {
   const { movies: popularMovies } = useGetMovies("popular");
   const { movies: topRatedMovies } = useGetMovies("top_rated");
-  const { people } = useGetPeople();
+  const { people: popularPeople } = useGetPeople();
   const { officialTrailerId } = useGetMovie(popularMovies[0]?.id);
 
   return (
@@ -19,30 +19,21 @@ export function App() {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen
       ></iframe>
-
-      <MoviesSection
+      <CarouselSection
         section="Popular Movies"
-        link="popular"
-        movies={popularMovies}
+        link="movies/popular"
+        data={popularMovies}
       />
-      <MoviesSection
+      <CarouselSection
         section="Top Rated Movies"
-        link="top_rated"
-        movies={topRatedMovies}
+        link="movies/top_rated"
+        data={topRatedMovies}
       />
-      <section className="overflow-hidden">
-        <h2>Popular Persons</h2>
-        <div className="probando2">
-          {people.map((people) => (
-            <img
-              key={people.id}
-              src={`https://image.tmdb.org/t/p/original${people.image}`}
-              alt={people.name}
-              className="hover:scale-105 transition-transform"
-            />
-          ))}
-        </div>
-      </section>
+      <CarouselSection
+        section="Popular People"
+        link="people/popular"
+        data={popularPeople}
+      />
     </>
   );
 }

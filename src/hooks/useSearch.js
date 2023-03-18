@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { searchData } from "../services/search";
+import { search_type } from "../utils/search_type";
 
-export function useSearch(type) {
+export function useSearch() {
   const [data, setData] = useState([]);
-  const { query } = useParams();
+  const { type, query } = useParams();
 
   const obtainMovies = async () => {
-    const data = await searchData(type, query);
+    const data = await searchData(search_type[type], query);
     setData(data);
   };
 
@@ -15,5 +16,5 @@ export function useSearch(type) {
     obtainMovies();
   }, [query]);
 
-  return { query, data };
+  return { type, query, data };
 }

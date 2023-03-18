@@ -8,9 +8,8 @@ export async function getMovies(q) {
   const { results } = data;
   return results.map((result) => ({
     id: result.id,
-    title: result.title,
+    name: result.title,
     image: result.poster_path,
-    description: result.overview,
   }));
 }
 
@@ -20,7 +19,7 @@ export async function getMovie(id) {
   );
   const data = await response.json();
   return {
-    title: data.title,
+    name: data.title,
     image: data.poster_path,
     description: data.overview,
     genres: data.genres,

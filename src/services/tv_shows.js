@@ -6,7 +6,7 @@ export async function getTvShow(tvShowId) {
   );
   const data = await response.json();
   return {
-    title: data.name,
+    name: data.name,
     image: data.poster_path,
     description: data.overview,
   };

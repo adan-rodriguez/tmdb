@@ -11,7 +11,7 @@ export async function searchData(type, query) {
     case search_type.movies:
       return results.map((result) => ({
         id: result.id,
-        title: result.title,
+        name: result.title,
         image: result.poster_path,
         description: result.overview,
       }));
@@ -27,7 +27,7 @@ export async function searchData(type, query) {
     case search_type.tv_shows:
       return results.map((result) => ({
         id: result.id,
-        title: result.name,
+        name: result.name,
         image: result.poster_path,
       }));
 

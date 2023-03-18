@@ -5,9 +5,11 @@ import genres from "../utils/genres.json";
 
 export function useGetMoviesByGender() {
   const [movies, setMovies] = useState([]);
-  const { genderId } = useParams();
+  const { genderName } = useParams();
 
-  const gender = genres.find((gender) => gender.id == genderId).name;
+  const genderId = genres.find(
+    (gender) => gender.name.toLowerCase() === genderName
+  ).id;
 
   const obtainMovies = async () => {
     const movies = await getMovies(genderId);
@@ -18,5 +20,8 @@ export function useGetMoviesByGender() {
     obtainMovies();
   }, []);
 
-  return { gender, movies };
+  return {
+    gender: `${genderName[0].toUpperCase()}${genderName.slice(1)}`,
+    movies,
+  };
 }

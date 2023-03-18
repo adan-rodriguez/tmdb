@@ -8,7 +8,7 @@ export async function getMovies(id) {
   const { results } = data;
   return results.map((result) => ({
     id: result.id,
-    title: result.title,
+    name: result.title,
     image: result.poster_path,
   }));
 }

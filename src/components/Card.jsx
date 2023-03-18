@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-export function MovieCard({ id, image, name }) {
+export function Card({ id, image, name, linkCard }) {
   return (
-    <Link to={`/movies/${id}`}>
+    <Link style={{ minWidth: "200px" }} to={`/${linkCard}/${id}`}>
       <img
         src={`https://image.tmdb.org/t/p/original${image}`}
         alt={name}
