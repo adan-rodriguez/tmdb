@@ -6,7 +6,9 @@ export function CarouselSection({ section, link, data }) {
   return (
     <section className="overflow-hidden p-5">
       <Link to={`/${link}`}>
-        <h2 className="font-bold text-xl">{section}</h2>
+        <h2 className="inline-block font-black mb-2 text-xl bg-gradient-to-r from-light-green to-light-blue text-transparent bg-clip-text">
+          {section}
+        </h2>
       </Link>
       <div className="flex">
         {data.map((elem) => (

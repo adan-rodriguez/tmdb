@@ -22,7 +22,7 @@ export function RootLayout() {
           onSubmit={submitSearch}
         >
           <select
-            className="h-7 px-2 focus:outline-0 tracking-wide"
+            className="h-7 px-2 focus:outline-0 tracking-wide rounded-l-2xl"
             name="search_type"
           >
             <option selected value={search_type.movies}>
@@ -37,7 +37,10 @@ export function RootLayout() {
             name="search"
             placeholder="Search in TMDB"
           />
-          <button className="bg-gray-400 h-7 px-3 tracking-wide" type="submit">
+          <button
+            className="bg-light-blue font-normal h-7 px-3 tracking-wide rounded-r-2xl"
+            type="submit"
+          >
             Search
           </button>
         </form>
