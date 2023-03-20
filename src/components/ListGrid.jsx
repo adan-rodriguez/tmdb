@@ -4,7 +4,8 @@ import { Pagination } from "./Pagination";
 
 export function ListGrid({
   children,
-  data,
+  data = [],
+  pages,
   pageTitle,
   linkCard,
   linkPagination,
@@ -19,7 +20,7 @@ export function ListGrid({
         ))}
       </div>
       <PaginationProvider>
-        <Pagination link={linkPagination} />
+        <Pagination link={linkPagination} pages={pages} />
       </PaginationProvider>
     </div>
   );

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Card } from "./Card";
 
-export function CarouselSection({ section, link, data }) {
+export function CarouselSection({ section, link, data = [] }) {
   const linkCard = link.slice(0, link.indexOf("/"));
   return (
     <section className="overflow-hidden p-5">

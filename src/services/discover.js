@@ -5,10 +5,13 @@ export async function getMovies(id, page) {
     `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY_TMDB}&with_genres=${id}&page=${page}`
   );
   const data = await response.json();
-  const { results } = data;
-  return results.map((result) => ({
-    id: result.id,
-    name: result.title,
-    image: result.poster_path,
-  }));
+  const { results, total_pages } = data;
+  return {
+    pages: total_pages,
+    movies: results.map((result) => ({
+      id: result.id,
+      name: result.title,
+      image: result.poster_path,
+    })),
+  };
 }

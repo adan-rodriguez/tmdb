@@ -4,7 +4,7 @@ import { useGetPeople } from "./hooks/useGetPeople";
 import { useGetMovie } from "./hooks/useGetMovie";
 
 export function HomePage() {
-  const { movies: popularMovies } = useGetMovies("popular");
+  const { movies: popularMovies = [] } = useGetMovies("popular");
   const { movies: topRatedMovies } = useGetMovies("top_rated");
   const { people: popularPeople } = useGetPeople();
   const { officialTrailerId } = useGetMovie(popularMovies[0]?.id);

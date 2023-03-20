@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getMovies } from "../services/movies";
 
-export function useGetMovies(q) {
-  const [movies, setMovies] = useState([]);
+export function useGetMovies(type) {
+  const [movies, setMovies] = useState({});
   const { page } = useParams();
 
   const obtainMovies = async () => {
-    const movies = await getMovies(q, page);
+    const movies = await getMovies(type, page);
     setMovies(movies);
   };
 
@@ -15,5 +15,5 @@ export function useGetMovies(q) {
     obtainMovies();
   }, [page]);
 
-  return { movies };
+  return { ...movies };
 }

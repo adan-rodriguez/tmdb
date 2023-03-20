@@ -5,12 +5,15 @@ export async function getPeople(page) {
     `https://api.themoviedb.org/3/person/popular?api_key=${API_KEY_TMDB}&page=${page}`
   );
   const data = await response.json();
-  const { results } = data;
-  return results.map((result) => ({
-    id: result.id,
-    name: result.name,
-    image: result.profile_path,
-  }));
+  const { results, total_pages } = data;
+  return {
+    pages: total_pages,
+    people: results.map((result) => ({
+      id: result.id,
+      name: result.name,
+      image: result.profile_path,
+    })),
+  };
 }
 
 export async function getPerson(personId) {

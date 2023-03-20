@@ -9,7 +9,9 @@ import { MoviePage } from "./pages/MoviePage";
 import { PersonPage } from "./pages/PersonPage";
 import { PopularMoviesPage } from "./pages/PopularMoviesPage";
 import { PopularPeoplePage } from "./pages/PopularPeoplePage";
-import { SearchPage } from "./pages/SearchPage";
+import { SearchMoviesPage } from "./pages/SearchMoviesPage";
+import { SearchPeoplePage } from "./pages/SearchPeoplePage";
+import { SearchTvShowsPage } from "./pages/SearchTvShowsPage";
 import { TopRatedMoviesPage } from "./pages/TopRatedMoviesPage";
 import { TvShowPage } from "./pages/TvShowPage";
 
@@ -39,8 +41,16 @@ const router = createBrowserRouter([
         element: <GenderPage />,
       },
       {
-        path: "search/:type/:query/:page",
-        element: <SearchPage />,
+        path: "search/movies/:query/:page",
+        element: <SearchMoviesPage />,
+      },
+      {
+        path: "search/tv_shows/:query/:page",
+        element: <SearchTvShowsPage />,
+      },
+      {
+        path: "search/people/:query/:page",
+        element: <SearchPeoplePage />,
       },
       {
         path: "movies/popular/:page",

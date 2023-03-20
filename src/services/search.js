@@ -6,30 +6,39 @@ export async function searchData(type, query, page) {
     `https://api.themoviedb.org/3/search/${type}?api_key=${API_KEY_TMDB}&query=${query}&page=${page}`
   );
   const data = await response.json();
-  const { results } = data;
+  const { results, total_pages } = data;
   switch (type) {
     case search_type.movies:
-      return results.map((result) => ({
-        id: result.id,
-        name: result.title,
-        image: result.poster_path,
-        description: result.overview,
-      }));
+      return {
+        pages: total_pages,
+        data: results.map((result) => ({
+          id: result.id,
+          name: result.title,
+          image: result.poster_path,
+          description: result.overview,
+        })),
+      };
 
     case search_type.people:
-      return results.map((result) => ({
-        id: result.id,
-        name: result.name,
-        image: result.profile_path,
-        job: result.know_for_department,
-      }));
+      return {
+        pages: total_pages,
+        data: results.map((result) => ({
+          id: result.id,
+          name: result.name,
+          image: result.profile_path,
+          job: result.know_for_department,
+        })),
+      };
 
     case search_type.tv_shows:
-      return results.map((result) => ({
-        id: result.id,
-        name: result.name,
-        image: result.poster_path,
-      }));
+      return {
+        pages: total_pages,
+        data: results.map((result) => ({
+          id: result.id,
+          name: result.name,
+          image: result.poster_path,
+        })),
+      };
 
     default:
       break;

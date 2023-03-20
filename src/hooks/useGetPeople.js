@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { getPeople } from "../services/people";
 
 export function useGetPeople() {
-  const [people, setPeople] = useState([]);
+  const [people, setPeople] = useState({});
   const { page } = useParams();
 
   const obtainPeople = async () => {
@@ -15,5 +15,5 @@ export function useGetPeople() {
     obtainPeople();
   }, [page]);
 
-  return { people };
+  return { ...people };
 }

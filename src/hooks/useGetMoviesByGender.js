@@ -4,7 +4,7 @@ import { getMovies } from "../services/discover";
 import genres from "../utils/genres.json";
 
 export function useGetMoviesByGender() {
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState({});
   const { genderName, page } = useParams();
 
   const genderId = genres.find(
@@ -22,6 +22,6 @@ export function useGetMoviesByGender() {
 
   return {
     gender: `${genderName[0].toUpperCase()}${genderName.slice(1)}`,
-    movies,
+    ...movies,
   };
 }

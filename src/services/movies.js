@@ -5,17 +5,20 @@ export async function getMovies(q, page) {
     `https://api.themoviedb.org/3/movie/${q}?api_key=${API_KEY_TMDB}&page=${page}`
   );
   const data = await response.json();
-  const { results } = data;
-  return results.map((result) => ({
-    id: result.id,
-    name: result.title,
-    image: result.poster_path,
-  }));
+  const { results, total_pages: pages } = data;
+  return {
+    pages,
+    movies: results.map((result) => ({
+      id: result.id,
+      name: result.title,
+      image: result.poster_path,
+    })),
+  };
 }
 
-export async function getMovie(id) {
+export async function getMovie(movieId) {
   const response = await fetch(
-    `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY_TMDB}&append_to_response=videos,credits`
+    `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY_TMDB}&append_to_response=videos,credits`
   );
   const data = await response.json();
   return {
