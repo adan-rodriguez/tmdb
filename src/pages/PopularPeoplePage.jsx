@@ -5,6 +5,11 @@ export function PopularPeoplePage() {
   const { people } = useGetPeople();
 
   return (
-    <ListGrid data={people} pageTitle={"Popular people"} linkCard={"people"} />
+    <ListGrid
+      data={people}
+      pageTitle="Popular people"
+      linkCard="people"
+      linkPagination="people/popular"
+    />
   );
 }

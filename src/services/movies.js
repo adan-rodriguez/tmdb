@@ -1,8 +1,8 @@
 import { API_KEY_TMDB } from "../utils/constants";
 
-export async function getMovies(q) {
+export async function getMovies(q, page) {
   const response = await fetch(
-    `https://api.themoviedb.org/3/movie/${q}?api_key=${API_KEY_TMDB}&language=en-US&page=1`
+    `https://api.themoviedb.org/3/movie/${q}?api_key=${API_KEY_TMDB}&page=${page}`
   );
   const data = await response.json();
   const { results } = data;
@@ -15,7 +15,7 @@ export async function getMovies(q) {
 
 export async function getMovie(id) {
   const response = await fetch(
-    `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY_TMDB}&language=en-US&append_to_response=videos,credits`
+    `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY_TMDB}&append_to_response=videos,credits`
   );
   const data = await response.json();
   return {

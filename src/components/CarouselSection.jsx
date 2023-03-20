@@ -5,7 +5,7 @@ export function CarouselSection({ section, link, data }) {
   const linkCard = link.slice(0, link.indexOf("/"));
   return (
     <section className="overflow-hidden p-5">
-      <Link to={`/${link}`}>
+      <Link to={`/${link}/1`}>
         <h2 className="inline-block font-black mb-2 text-xl bg-gradient-to-r from-light-green to-light-blue text-transparent bg-clip-text">
           {section}
         </h2>

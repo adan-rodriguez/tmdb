@@ -31,7 +31,7 @@ export function MoviePage() {
       <p>{description}</p>
       <div>
         {genres?.map((gender) => (
-          <Link key={gender.id} to={`/genres/${gender.name.toLowerCase()}`}>
+          <Link key={gender.id} to={`/genres/${gender.name.toLowerCase()}/1`}>
             <span>{gender.name}</span>
           </Link>
         ))}

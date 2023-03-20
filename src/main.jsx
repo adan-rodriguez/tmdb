@@ -35,23 +35,23 @@ const router = createBrowserRouter([
         element: <TvShowPage />,
       },
       {
-        path: "genres/:genderName",
+        path: "genres/:genderName/:page",
         element: <GenderPage />,
       },
       {
-        path: "search/:type/:query",
+        path: "search/:type/:query/:page",
         element: <SearchPage />,
       },
       {
-        path: "movies/popular",
+        path: "movies/popular/:page",
         element: <PopularMoviesPage />,
       },
       {
-        path: "movies/top_rated",
+        path: "movies/top_rated/:page",
         element: <TopRatedMoviesPage />,
       },
       {
-        path: "people/popular",
+        path: "people/popular/:page",
         element: <PopularPeoplePage />,
       },
     ],

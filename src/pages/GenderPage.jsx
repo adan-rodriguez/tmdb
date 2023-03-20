@@ -4,5 +4,12 @@ import { useGetMoviesByGender } from "../hooks/useGetMoviesByGender";
 export function GenderPage() {
   const { gender, movies } = useGetMoviesByGender();
 
-  return <ListGrid data={movies} pageTitle={gender} linkCard="movies" />;
+  return (
+    <ListGrid
+      data={movies}
+      pageTitle={gender}
+      linkCard="movies"
+      linkPagination={`genres/${gender}`}
+    />
+  );
 }

@@ -10,15 +10,15 @@ export default function useSumbitSearch() {
     e.target.search.value = "";
     switch (e.target.search_type.value) {
       case search_type.movies:
-        navigate(`/search/movies/${query}`);
+        navigate(`/search/movies/${query}/1`);
         break;
 
       case search_type.people:
-        navigate(`/search/people/${query}`);
+        navigate(`/search/people/${query}/1`);
         break;
 
       case search_type.tv_shows:
-        navigate(`/search/tv_shows/${query}`);
+        navigate(`/search/tv_shows/${query}/1`);
         break;
 
       default:

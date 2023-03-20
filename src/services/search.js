@@ -1,9 +1,9 @@
 import { API_KEY_TMDB } from "../utils/constants";
 import { search_type } from "../utils/search_type";
 
-export async function searchData(type, query) {
+export async function searchData(type, query, page) {
   const response = await fetch(
-    `https://api.themoviedb.org/3/search/${type}?api_key=${API_KEY_TMDB}&query=${query}&language=en-US&page=1`
+    `https://api.themoviedb.org/3/search/${type}?api_key=${API_KEY_TMDB}&query=${query}&page=${page}`
   );
   const data = await response.json();
   const { results } = data;

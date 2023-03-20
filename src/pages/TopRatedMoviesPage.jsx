@@ -7,8 +7,9 @@ export function TopRatedMoviesPage() {
   return (
     <ListGrid
       data={movies}
-      pageTitle={"Top rated movies"}
-      linkCard={"movies"}
+      pageTitle="Top rated movies"
+      linkCard="movies"
+      linkPagination="movies/top_rated"
     />
   );
 }
