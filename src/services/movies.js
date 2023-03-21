@@ -12,6 +12,7 @@ export async function getMovies(q, page) {
       id: result.id,
       name: result.title,
       image: result.poster_path,
+      vote_average: result.vote_average,
     })),
   };
 }
@@ -35,7 +36,7 @@ export async function getMovie(movieId) {
       logo: company.logo_path,
     })),
     countries: data.production_countries.map((country) => country.name),
-    release_date: data.release_date,
+    year: data.release_date.slice(0, 4),
     duration: data.runtime,
     vote_average: data.vote_average,
     vote_count: data.vote_count,

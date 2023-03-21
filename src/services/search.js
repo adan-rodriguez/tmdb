@@ -15,7 +15,7 @@ export async function searchData(type, query, page) {
           id: result.id,
           name: result.title,
           image: result.poster_path,
-          description: result.overview,
+          vote_average: result.vote_average,
         })),
       };
 
@@ -26,7 +26,7 @@ export async function searchData(type, query, page) {
           id: result.id,
           name: result.name,
           image: result.profile_path,
-          job: result.know_for_department,
+          vote_average: result.vote_average,
         })),
       };
 
@@ -37,6 +37,7 @@ export async function searchData(type, query, page) {
           id: result.id,
           name: result.name,
           image: result.poster_path,
+          vote_average: result.vote_average,
         })),
       };
 

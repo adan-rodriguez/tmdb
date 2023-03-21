@@ -12,6 +12,7 @@ export async function getMovies(id, page) {
       id: result.id,
       name: result.title,
       image: result.poster_path,
+      vote_average: result.vote_average,
     })),
   };
 }

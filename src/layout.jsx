@@ -8,7 +8,7 @@ export function RootLayout() {
 
   return (
     <>
-      <header className="max-w-screen-2xl m-auto p-4 flex justify-between">
+      <header className="max-w-screen-2xl m-auto p-4 flex flex-col justify-center items-center sm:flex-row sm:justify-between gap-5">
         <Link to="/" title="Home">
           <img
             src={logo}
@@ -18,7 +18,7 @@ export function RootLayout() {
           />
         </Link>
         <form
-          className="text-black text-sm tracking-wide"
+          className="text-black text-sm tracking-wide flex w-full max-w-screen-md"
           onSubmit={submitSearch}
         >
           <select
@@ -32,7 +32,7 @@ export function RootLayout() {
             <option value={search_type.tv_shows}>Tv Shows</option>
           </select>
           <input
-            className="h-7 px-3 focus:outline-0 w-96 tracking-wide"
+            className="h-7 px-3 focus:outline-0 tracking-wide grow"
             type="text"
             name="search"
             placeholder="Search in TMDB"

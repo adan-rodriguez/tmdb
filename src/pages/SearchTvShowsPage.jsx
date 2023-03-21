@@ -2,7 +2,7 @@ import { ListGrid } from "../components/ListGrid";
 import { useSearch } from "../hooks/useSearch";
 
 export function SearchTvShowsPage() {
-  const { query, data, pages } = useSearch("tv_shows");
+  const { query, data = [], pages } = useSearch("tv_shows");
 
   return (
     <ListGrid
@@ -13,7 +13,8 @@ export function SearchTvShowsPage() {
       linkPagination={`search/tv_shows/${query}`}
     >
       <h2 className="text-lg mb-2">
-        Results for <strong>&quot;{query}&quot;</strong>
+        {data.length === 0 ? "No results " : "Results "} for{" "}
+        <strong>&quot;{query}&quot;</strong>
       </h2>
     </ListGrid>
   );

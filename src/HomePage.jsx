@@ -21,17 +21,20 @@ export function HomePage() {
       ></iframe>
       <CarouselSection
         section="Popular Movies"
-        link="movies/popular"
+        linkSection="movies/popular"
+        linkCard="movies"
         data={popularMovies}
       />
       <CarouselSection
         section="Top Rated Movies"
-        link="movies/top_rated"
+        linkSection="movies/top_rated"
+        linkCard="movies"
         data={topRatedMovies}
       />
       <CarouselSection
         section="Popular People"
-        link="people/popular"
+        linkSection="people/popular"
+        linkCard="people"
         data={popularPeople}
       />
     </>
