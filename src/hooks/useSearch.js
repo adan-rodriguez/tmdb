@@ -7,13 +7,13 @@ export function useSearch(type) {
   const [data, setData] = useState({});
   const { query, page } = useParams();
 
-  const obtainMovies = async () => {
+  const obtainData = async () => {
     const data = await searchData(search_type[type], query, page);
     setData(data);
   };
 
   useEffect(() => {
-    obtainMovies();
+    obtainData();
   }, [query, page]);
 
   return { query, ...data };

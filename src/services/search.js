@@ -15,7 +15,7 @@ export async function searchData(type, query, page) {
           id: result.id,
           name: result.title,
           image: result.poster_path,
-          vote_average: result.vote_average,
+          vote_average: result.vote_average.toFixed(1),
         })),
       };
 
@@ -26,7 +26,7 @@ export async function searchData(type, query, page) {
           id: result.id,
           name: result.name,
           image: result.profile_path,
-          vote_average: result.vote_average,
+          vote_average: result.vote_average.toFixed(1),
         })),
       };
 
@@ -37,7 +37,7 @@ export async function searchData(type, query, page) {
           id: result.id,
           name: result.name,
           image: result.poster_path,
-          vote_average: result.vote_average,
+          vote_average: result.vote_average.toFixed(1),
         })),
       };
 

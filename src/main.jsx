@@ -4,7 +4,7 @@ import { ErrorPage } from "./ErrorPage";
 import { HomePage } from "./HomePage";
 import "./index.css";
 import { RootLayout } from "./layout";
-import { GenderPage } from "./pages/GenderPage";
+import { MoviesGenderPage } from "./pages/MoviesGenderPage";
 import { MoviePage } from "./pages/MoviePage";
 import { PersonPage } from "./pages/PersonPage";
 import { PopularMoviesPage } from "./pages/PopularMoviesPage";
@@ -14,6 +14,8 @@ import { SearchPeoplePage } from "./pages/SearchPeoplePage";
 import { SearchTvShowsPage } from "./pages/SearchTvShowsPage";
 import { TopRatedMoviesPage } from "./pages/TopRatedMoviesPage";
 import { TvShowPage } from "./pages/TvShowPage";
+import { TvShowsGenderPage } from "./pages/TvShowsGenderPage";
+import { PopularTvShowsPage } from "./pages/PopularTvShowsPage";
 
 const router = createBrowserRouter([
   {
@@ -37,8 +39,12 @@ const router = createBrowserRouter([
         element: <TvShowPage />,
       },
       {
-        path: "genres/:genderName/:page",
-        element: <GenderPage />,
+        path: "movies/:genderName/:page",
+        element: <MoviesGenderPage />,
+      },
+      {
+        path: "tv_shows/:genderName/:page",
+        element: <TvShowsGenderPage />,
       },
       {
         path: "search/movies/:query/:page",
@@ -63,6 +69,10 @@ const router = createBrowserRouter([
       {
         path: "people/popular/:page",
         element: <PopularPeoplePage />,
+      },
+      {
+        path: "tv_shows/popular/:page",
+        element: <PopularTvShowsPage />,
       },
     ],
   },

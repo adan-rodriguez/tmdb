@@ -9,23 +9,43 @@ export function MoviePage() {
     genres,
     officialTrailerId,
     backdrop,
-    website,
     year,
     duration,
     vote_average,
     vote_count,
     countries,
-    companies,
     director,
+    cast,
   } = useGetMovie();
 
   return (
     <div className="p-4 bg-zinc-900">
       <h2 className="text-4xl font-black">{name}</h2>
-      <span className="text-sm opacity-80">
-        {year} | {duration}min
-      </span>
-      <div className="relative">
+      <div className="flex items-center gap-5 text-sm opacity-80">
+        <span>
+          {year} | {duration}min
+        </span>
+        <div className="flex gap-x-3 items-baseline">
+          <svg
+            className="opacity-100"
+            width="16"
+            height="16"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="yellow"
+          >
+            <path d="M12 20.1l5.82 3.682c1.066.675 2.37-.322 2.09-1.584l-1.543-6.926 5.146-4.667c.94-.85.435-2.465-.799-2.567l-6.773-.602L13.29.89a1.38 1.38 0 0 0-2.581 0l-2.65 6.53-6.774.602C.052 8.126-.453 9.74.486 10.59l5.147 4.666-1.542 6.926c-.28 1.262 1.023 2.26 2.09 1.585L12 20.099z"></path>
+          </svg>
+          <span>{vote_average}</span>
+          <span className="text-xs">{vote_count}votes</span>
+        </div>
+      </div>
+      <div className="flex gap-y-5 text-sm opacity-80">
+        <span>
+          {countries?.length === 1 ? countries : countries?.join(" | ")}
+        </span>
+      </div>
+      <div className="my-4 relative">
         <img
           src={`https://image.tmdb.org/t/p/original${backdrop}`}
           alt={name}
@@ -36,45 +56,52 @@ export function MoviePage() {
           alt={name}
         />
       </div>
-      <div className="flex flex-col gap-y-4 mt-4">
-        <p>{description}</p>
-        <div className="flex gap-x-2">
-          {genres?.map((gender) => (
-            <Link key={gender.id} to={`/genres/${gender.name.toLowerCase()}/1`}>
-              <span className="text-xs font-bold px-3 py-1 rounded-xl border border-solid hover:bg-slate-700  transition-colors">
-                {gender.name}
-              </span>
-            </Link>
-          ))}
-        </div>
-        <span>Director: {director?.name}</span>
-        <a
-          href={website}
-          title={`Visit ${name} Website`}
-          target="_blank"
-          rel="noreferrer"
+      <div className="flex gap-x-2">
+        {genres?.map((gender) => (
+          <Link
+            key={gender.id}
+            to={`/movies/${gender.name.toLowerCase().replace(/ /g, "-")}/1`}
+          >
+            <span className="text-xs font-bold px-3 py-1 rounded-xl border border-solid hover:bg-slate-700  transition-colors">
+              {gender.name}
+            </span>
+          </Link>
+        ))}
+      </div>
+      <p className="py-5 border-b border-white border-solid">{description}</p>
+      <span className="block py-5 border-b border-white border-solid">
+        <strong className="text-sm">Director:</strong>{" "}
+        <Link
+          className="font-bold transition-all hover:border-b hover:border-solid hover:border-white"
+          to={`/people/${director?.id}`}
         >
-          Website
-        </a>
-        <span>{vote_average}</span>
-        <span>{vote_count}</span>
-        <div>
-          {countries?.map((country) => (
-            <span key={country}>{country}</span>
-          ))}
-        </div>
-        <div>
-          {companies?.map((company) => (
-            <div key={company.id}>
-              <img
-                className="w-24"
-                src={`https://image.tmdb.org/t/p/original${company.logo}`}
-                alt={company.name}
-              />
-              <span key={company.name}>{company.name}</span>
-            </div>
-          ))}
-        </div>
+          {director?.name}
+        </Link>
+      </span>
+      <div className="py-5 max-w-3xl flex flex-col gap-y-5">
+        <span className="font-bold block text-sm">Cast</span>
+        {cast?.map((person) => (
+          <div
+            className="flex justify-between items-center bg-zinc-800 pl-5 gap-x-5"
+            key={person.id}
+          >
+            <Link
+              className="text-sm font-bold transition-all hover:border-b hover:border-solid hover:border-white"
+              to={`/people/${person.id}`}
+            >
+              {person.name}
+            </Link>
+            <span className="text-xs opacity-90">
+              &quot;{person.character}&quot;
+            </span>
+            <img
+              width={40}
+              height={40}
+              src={`https://image.tmdb.org/t/p/original${person.image}`}
+              alt={person.name}
+            />
+          </div>
+        ))}
       </div>
       {officialTrailerId && (
         <iframe

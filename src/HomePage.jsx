@@ -2,11 +2,13 @@ import { CarouselSection } from "./components/CarouselSection";
 import { useGetMovies } from "./hooks/useGetMovies";
 import { useGetPeople } from "./hooks/useGetPeople";
 import { useGetMovie } from "./hooks/useGetMovie";
+import { useGetTvShows } from "./hooks/useGetTvShows";
 
 export function HomePage() {
   const { movies: popularMovies = [] } = useGetMovies("popular");
   const { movies: topRatedMovies } = useGetMovies("top_rated");
   const { people: popularPeople } = useGetPeople();
+  const { tvShows: popularTvShows } = useGetTvShows("popular");
   const { officialTrailerId } = useGetMovie(popularMovies[0]?.id);
 
   return (
@@ -36,6 +38,12 @@ export function HomePage() {
         linkSection="people/popular"
         linkCard="people"
         data={popularPeople}
+      />
+      <CarouselSection
+        section="Popular Tv Shows"
+        linkSection="tv_shows/popular"
+        linkCard="tv_shows"
+        data={popularTvShows}
       />
     </>
   );

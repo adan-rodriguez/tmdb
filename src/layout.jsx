@@ -36,6 +36,7 @@ export function RootLayout() {
             type="text"
             name="search"
             placeholder="Search in TMDB"
+            required
           />
           <button
             className="bg-light-blue font-normal h-7 px-3 tracking-wide rounded-r-2xl"

@@ -18,7 +18,7 @@ export function useGetMovie(id) {
   useEffect(() => {
     setOfficialTrailerId(
       movie.videos?.find((video) => video.official && video.type === "Trailer")
-        ?.key
+        ?.id
     );
   }, [movie]);
 
