@@ -5,7 +5,6 @@ import { getTvShows } from "../services/tv_shows";
 export function useGetTvShows(type) {
   const [tvShows, setTvShows] = useState({});
   const { page } = useParams();
-  console.log(tvShows);
 
   const obtainTvShows = async () => {
     const tvShows = await getTvShows(type, page);
