@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export function Card({ id, image, name, link, vote_average }) {
   return (
     <Link
-      className="hover:scale-[1.02] transition-transform flex flex-col max-w-md"
+      className="hover:scale-[1.02] transition-transform flex flex-col max-w-md opacity-80 hover:opacity-100"
       style={{ minWidth: "200px" }}
       to={`/${link}/${id}`}
     >

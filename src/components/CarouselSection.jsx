@@ -3,28 +3,35 @@ import { Link } from "react-router-dom";
 import { Card } from "./Card";
 
 export function CarouselSection({ section, linkSection, linkCard, data = [] }) {
-  const [position, setPosition] = useState(0);
-  const [carousel, setCarousel] = useState(0);
+  const [translate, setTranslate] = useState(0);
+  const [hiddenCarousel, setHiddenCarousel] = useState(0);
 
   const handleClickPrev = () => {
-    setPosition(position + 204);
-    setCarousel(carousel + 204);
+    setTranslate(translate + (translate > -204 ? -translate : 204));
   };
 
   const handleClickNext = () => {
-    setPosition(position - 204);
-    setCarousel(carousel - 204);
+    setTranslate(() => {
+      if (translate === -hiddenCarousel) {
+        return 0;
+      }
+      return (
+        translate -
+        (-translate > hiddenCarousel - 204 ? hiddenCarousel + translate : 204)
+      );
+    });
   };
 
   useEffect(() => {
-    setCarousel(
+    setHiddenCarousel(
       Number(document.querySelector(".carousel").scrollWidth) -
-        Number(document.querySelector(".carousel").clientWidth)
+        Number(document.querySelector(".carousel").clientWidth) +
+        20
     );
   }, [data]);
 
   return (
-    <section className="carousel overflow-hidden p-5">
+    <section className="carousel overflow-hidden p-5 relative">
       <Link to={`/${linkSection}/1`}>
         <h2 className="inline-block font-black mb-2 text-xl bg-gradient-to-r from-light-green to-light-blue text-transparent bg-clip-text">
           {section}
@@ -32,29 +39,29 @@ export function CarouselSection({ section, linkSection, linkCard, data = [] }) {
       </Link>
       <div
         style={{
-          // transform: `translateX(${position * -100}%)`,
-          transform: `translateX(${position}px)`,
+          transform: `translateX(${translate}px)`,
           transitionDuration: ".5s",
         }}
-        className="flex gap-x-1"
+        className="slider flex gap-x-1"
       >
         {data.map((elem) => (
           <Card key={elem.id} {...elem} link={linkCard} />
         ))}
       </div>
       <button
-        className="carousel-button prev"
+        className="absolute left-8 top-1/2 font-black text-4xl hover:scale-[1.1] cursor-pointer w-16 h-16 rounded-full bg-slate-900 bg-opacity-70"
         onClick={handleClickPrev}
-        disabled={position === 0}
+        disabled={translate === 0}
+        aria-label="Previous"
       >
-        Prev
+        &lt;
       </button>
       <button
-        className="carousel-button next"
+        className="absolute right-8 top-1/2 font-black text-4xl hover:scale-[1.1] cursor-pointer w-16 h-16 rounded-full bg-slate-900 bg-opacity-70"
         onClick={handleClickNext}
-        disabled={carousel < 0}
+        aria-label="Next"
       >
-        Next
+        &gt;
       </button>
     </section>
   );
