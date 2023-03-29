@@ -8,7 +8,6 @@ export function TvShowPage() {
     description,
     genres,
     backdrop,
-    episode_duration,
     first_air_date,
     last_air_date,
     n_episodes,
@@ -20,15 +19,43 @@ export function TvShowPage() {
   } = useGetTvShow();
 
   return (
-    <>
-      <div>
+    <div className="p-4 bg-zinc-900">
+      <h2 className="text-4xl font-black">{name}</h2>
+      <div className="flex items-center gap-5 text-sm opacity-80">
+        <span>
+          {first_air_date.slice(0, 4)}-{last_air_date.slice(0, 4)} | {n_seasons}{" "}
+          seasons | {n_episodes} episodes
+        </span>
+        <div className="flex gap-x-3 items-baseline">
+          <svg
+            className="opacity-100"
+            width="16"
+            height="16"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="yellow"
+          >
+            <path d="M12 20.1l5.82 3.682c1.066.675 2.37-.322 2.09-1.584l-1.543-6.926 5.146-4.667c.94-.85.435-2.465-.799-2.567l-6.773-.602L13.29.89a1.38 1.38 0 0 0-2.581 0l-2.65 6.53-6.774.602C.052 8.126-.453 9.74.486 10.59l5.147 4.666-1.542 6.926c-.28 1.262 1.023 2.26 2.09 1.585L12 20.099z"></path>
+          </svg>
+          <span>{vote_average}</span>
+          <span className="text-xs">{vote_count}votes</span>
+        </div>
+      </div>
+      <div className="flex gap-y-5 text-sm opacity-80">
+        <span>
+          {countries.length === 1 ? countries : countries.join(" | ")}
+        </span>
+      </div>
+      <div className="my-4 relative">
         <img
-          className="w-96"
+          src={`https://image.tmdb.org/t/p/original${backdrop}`}
+          alt={name}
+        />
+        <img
+          className="w-52 absolute bottom-0 max-w-[25%]"
           src={`https://image.tmdb.org/t/p/original${image}`}
           alt={name}
         />
-        <h2 className="font-bold">{name}</h2>
-        <p>{description}</p>
       </div>
       <div className="flex gap-x-2">
         {genres.map((gender) => (
@@ -42,6 +69,7 @@ export function TvShowPage() {
           </Link>
         ))}
       </div>
+      <p className="py-5 border-b border-white border-solid">{description}</p>
       {officialTrailerId && (
         <iframe
           className="w-full h-96"
@@ -52,6 +80,6 @@ export function TvShowPage() {
           allowFullScreen
         ></iframe>
       )}
-    </>
+    </div>
   );
 }

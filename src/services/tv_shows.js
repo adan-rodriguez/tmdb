@@ -28,7 +28,6 @@ export async function getTvShow(tvShowId) {
     description: data.overview,
     genres: data.genres.map((gender) => ({ id: gender.id, name: gender.name })),
     backdrop: data.backdrop_path, // string or null
-    episode_duration: data.episode_run_time[0],
     first_air_date: data.first_air_date,
     last_air_date: data.last_air_date,
     n_episodes: data.number_of_episodes,

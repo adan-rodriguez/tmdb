@@ -9,6 +9,7 @@ export function HomePage() {
   const { movies: topRatedMovies } = useGetMovies("top_rated");
   const { people: popularPeople } = useGetPeople();
   const { tvShows: popularTvShows } = useGetTvShows("popular");
+  const { tvShows: topRatedTvShows } = useGetTvShows("top_rated");
   const { officialTrailerId } = useGetMovie(popularMovies[0]?.id);
 
   return (
@@ -28,7 +29,7 @@ export function HomePage() {
         data={popularMovies}
       />
       <CarouselSection
-        section="Top Rated Movies"
+        section="Top rated Movies"
         linkSection="movies/top_rated"
         linkCard="movies"
         data={topRatedMovies}
@@ -44,6 +45,12 @@ export function HomePage() {
         linkSection="tv_shows/popular"
         linkCard="tv_shows"
         data={popularTvShows}
+      />
+      <CarouselSection
+        section="Top rated Tv Shows"
+        linkSection="tv_shows/top_rated"
+        linkCard="tv_shows"
+        data={topRatedTvShows}
       />
     </>
   );

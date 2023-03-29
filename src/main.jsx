@@ -16,6 +16,7 @@ import { TopRatedMoviesPage } from "./pages/TopRatedMoviesPage";
 import { TvShowPage } from "./pages/TvShowPage";
 import { TvShowsGenderPage } from "./pages/TvShowsGenderPage";
 import { PopularTvShowsPage } from "./pages/PopularTvShowsPage";
+import { TopRatedTvShowsPage } from "./pages/TopRatedTvShowsPage";
 
 const router = createBrowserRouter([
   {
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
       {
         path: "movies/top_rated/:page",
         element: <TopRatedMoviesPage />,
+      },
+      {
+        path: "tv_shows/top_rated/:page",
+        element: <TopRatedTvShowsPage />,
       },
       {
         path: "people/popular/:page",

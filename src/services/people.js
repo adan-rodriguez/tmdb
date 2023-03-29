@@ -18,7 +18,7 @@ export async function getPeople(page) {
 
 export async function getPerson(personId) {
   const response = await fetch(
-    `https://api.themoviedb.org/3/person/${personId}?api_key=${API_KEY_TMDB}`
+    `https://api.themoviedb.org/3/person/${personId}?api_key=${API_KEY_TMDB}&append_to_response=movie_credits`
   );
   const data = await response.json();
   return {

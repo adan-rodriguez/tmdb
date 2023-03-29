@@ -28,7 +28,10 @@ export async function getMovie(movieId) {
     name: data.title,
     image: data.poster_path, // string or null
     description: data.overview, // string or null
-    genres: data.genres.map((gender) => ({ id: gender.id, name: gender.name })),
+    genres: data.genres.map((gender) => ({
+      id: gender.id,
+      name: gender.name,
+    })),
     backdrop: data.backdrop_path, // string or null
     countries: data.production_countries.map((country) => country.name),
     year: data.release_date.slice(0, 4),
