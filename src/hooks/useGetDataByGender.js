@@ -12,7 +12,7 @@ export function useGetDataByGender(type) {
   const obtainData = async () => {
     if (type === "movie") {
       const genderId = moviesGenres.find(
-        (gender) => gender.name.toLowerCase() === genderName.replace(/-/g, " ")
+        (gender) => gender.name.toLowerCase() === genderName.replace(/_/g, " ")
       ).id;
       const { data, pages } = await getData(type, genderId, page);
       setData(data);
@@ -21,7 +21,7 @@ export function useGetDataByGender(type) {
 
     if (type === "tv") {
       const genderId = tvGenres.find(
-        (gender) => gender.name.toLowerCase() === genderName.replace(/-/g, " ")
+        (gender) => gender.name.toLowerCase() === genderName.replace(/_/g, " ")
       ).id;
       const { data, pages } = await getData(type, genderId, page);
       setData(data);
@@ -34,7 +34,10 @@ export function useGetDataByGender(type) {
   }, [page]);
 
   return {
-    gender: genderName,
+    gender: `${genderName[0].toUpperCase()}${genderName.slice(1)}`.replace(
+      /_/g,
+      " "
+    ),
     data,
     pages,
   };

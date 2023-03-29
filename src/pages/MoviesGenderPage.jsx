@@ -8,9 +8,9 @@ export function MoviesGenderPage() {
     <ListGrid
       data={data}
       pages={pages}
-      pageTitle={`${gender[0].toUpperCase()}${gender.slice(1)}`}
+      pageTitle={`Movies | ${gender}`}
       linkCard="movies"
-      linkPagination={`movies/${gender.replace(/ /g, "-")}`}
+      linkPagination={`movies/${gender.toLowerCase().replace(/\s+/g, "_")}`}
     />
   );
 }
