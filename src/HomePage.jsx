@@ -5,7 +5,7 @@ import { useGetMovie } from "./hooks/useGetMovie";
 import { useGetTvShows } from "./hooks/useGetTvShows";
 
 export function HomePage() {
-  const { movies: popularMovies = [] } = useGetMovies("popular");
+  const { movies: popularMovies } = useGetMovies("popular");
   const { movies: topRatedMovies } = useGetMovies("top_rated");
   const { people: popularPeople } = useGetPeople();
   const { tvShows: popularTvShows } = useGetTvShows("popular");

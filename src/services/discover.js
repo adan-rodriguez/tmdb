@@ -11,7 +11,7 @@ export async function getData(type, id, page) {
     data: results.map((result) => ({
       id: result.id,
       name: result.title,
-      image: result.poster_path,
+      image: result.poster_path, // string or null
       vote_average: result.vote_average,
     })),
   };

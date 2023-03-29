@@ -2,7 +2,22 @@ import { Link } from "react-router-dom";
 import { useGetTvShow } from "../hooks/useGetTvShow";
 
 export function TvShowPage() {
-  const { name, image, description, genres } = useGetTvShow();
+  const {
+    name,
+    image,
+    description,
+    genres,
+    backdrop,
+    episode_duration,
+    first_air_date,
+    last_air_date,
+    n_episodes,
+    n_seasons,
+    countries,
+    vote_average,
+    vote_count,
+    officialTrailerId,
+  } = useGetTvShow();
 
   return (
     <>
@@ -16,7 +31,7 @@ export function TvShowPage() {
         <p>{description}</p>
       </div>
       <div className="flex gap-x-2">
-        {genres?.map((gender) => (
+        {genres.map((gender) => (
           <Link
             key={gender.id}
             to={`/tv_shows/${gender.name.toLowerCase().replace(/ /g, "-")}/1`}
@@ -27,6 +42,16 @@ export function TvShowPage() {
           </Link>
         ))}
       </div>
+      {officialTrailerId && (
+        <iframe
+          className="w-full h-96"
+          src={`https://www.youtube.com/embed/${officialTrailerId}`}
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        ></iframe>
+      )}
     </>
   );
 }

@@ -14,7 +14,7 @@ export async function searchData(type, query, page) {
         data: results.map((result) => ({
           id: result.id,
           name: result.title,
-          image: result.poster_path,
+          image: result.poster_path, // string or null
           vote_average: result.vote_average.toFixed(1),
         })),
       };
@@ -25,7 +25,7 @@ export async function searchData(type, query, page) {
         data: results.map((result) => ({
           id: result.id,
           name: result.name,
-          image: result.profile_path,
+          image: result.profile_path, // string or null
           vote_average: result.vote_average.toFixed(1),
         })),
       };
@@ -36,7 +36,7 @@ export async function searchData(type, query, page) {
         data: results.map((result) => ({
           id: result.id,
           name: result.name,
-          image: result.poster_path,
+          image: result.poster_path, // string or null
           vote_average: result.vote_average.toFixed(1),
         })),
       };

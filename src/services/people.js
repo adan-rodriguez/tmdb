@@ -11,7 +11,7 @@ export async function getPeople(page) {
     people: results.map((result) => ({
       id: result.id,
       name: result.name,
-      image: result.profile_path,
+      image: result.profile_path, // string or null
     })),
   };
 }
@@ -23,12 +23,11 @@ export async function getPerson(personId) {
   const data = await response.json();
   return {
     name: data.name,
-    image: data.profile_path,
+    image: data.profile_path, // string or null
     biography: data.biography,
-    birthday: data.birthday,
-    deathday: data.deathday,
-    website: data.homepage,
+    birthday: data.birthday, // string or null
+    deathday: data.deathday, // string or null
     known_for: data.known_for_department,
-    place_of_birth: data.place_of_birth,
+    place_of_birth: data.place_of_birth, // string or null
   };
 }

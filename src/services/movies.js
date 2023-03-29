@@ -11,7 +11,7 @@ export async function getMovies(q, page) {
     movies: results.map((result) => ({
       id: result.id,
       name: result.title,
-      image: result.poster_path,
+      image: result.poster_path, // string or null
       vote_average: result.vote_average,
     })),
   };
@@ -26,32 +26,24 @@ export async function getMovie(movieId) {
 
   return {
     name: data.title,
-    image: data.poster_path,
-    description: data.overview,
+    image: data.poster_path, // string or null
+    description: data.overview, // string or null
     genres: data.genres.map((gender) => ({ id: gender.id, name: gender.name })),
-    videos: data.videos.results.map((video) => ({
-      id: video.key,
-      type: video.type,
-      official: video.official,
-    })),
-    // website: data.homepage,
-    backdrop: data.backdrop_path,
-    // companies: data.production_companies.map((company) => ({
-    //   id: company.id,
-    //   name: company.name,
-    //   logo: company.logo_path,
-    // })),
+    backdrop: data.backdrop_path, // string or null
     countries: data.production_countries.map((country) => country.name),
     year: data.release_date.slice(0, 4),
-    duration: data.runtime,
+    duration: data.runtime, // integer or null
     vote_average: data.vote_average.toFixed(1),
     vote_count: data.vote_count,
     cast: data.credits.cast.map((credit) => ({
       id: credit.id,
       name: credit.name,
-      image: credit.profile_path,
+      image: credit.profile_path, // string or null
       character: credit.character,
     })),
     director: { id: director.id, name: director.name },
+    officialTrailerId: data.videos.results.find(
+      (video) => video.official && video.type === "Trailer"
+    )?.key,
   };
 }

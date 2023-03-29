@@ -42,7 +42,7 @@ export function MoviePage() {
       </div>
       <div className="flex gap-y-5 text-sm opacity-80">
         <span>
-          {countries?.length === 1 ? countries : countries?.join(" | ")}
+          {countries.length === 1 ? countries : countries.join(" | ")}
         </span>
       </div>
       <div className="my-4 relative">
@@ -57,7 +57,7 @@ export function MoviePage() {
         />
       </div>
       <div className="flex gap-x-2">
-        {genres?.map((gender) => (
+        {genres.map((gender) => (
           <Link
             key={gender.id}
             to={`/movies/${gender.name.toLowerCase().replace(/ /g, "-")}/1`}
@@ -73,14 +73,14 @@ export function MoviePage() {
         <strong className="text-sm">Director:</strong>{" "}
         <Link
           className="font-bold transition-all hover:border-b hover:border-solid hover:border-white"
-          to={`/people/${director?.id}`}
+          to={`/people/${director.id}`}
         >
-          {director?.name}
+          {director.name}
         </Link>
       </span>
       <div className="py-5 max-w-3xl flex flex-col gap-y-5">
         <span className="font-bold block text-sm">Cast</span>
-        {cast?.map((person) => (
+        {cast.map((person) => (
           <div
             className="flex justify-between items-center bg-zinc-800 pl-5 gap-x-5"
             key={person.id}

@@ -2,7 +2,7 @@ import { ListGrid } from "../components/ListGrid";
 import { useSearch } from "../hooks/useSearch";
 
 export function SearchPeoplePage() {
-  const { query, data = [], pages } = useSearch("people");
+  const { query, data, pages } = useSearch("people");
 
   return (
     <ListGrid
