@@ -4,7 +4,8 @@ import { Pagination } from "./Pagination";
 
 export function ListGrid({
   children,
-  data = [],
+  // data = [],
+  data,
   pages,
   pageTitle,
   linkCard,
@@ -20,7 +21,12 @@ export function ListGrid({
         <>
           <div className="grid grid-cols-custom gap-2">
             {data.map((elem) => (
-              <Card key={elem.id} {...elem} link={linkCard} />
+              <div
+                key={elem.id}
+                className="min-w-[200px] hover:scale-[1.02] transition-transform max-w-xl opacity-80 hover:opacity-100 relative flex"
+              >
+                <Card {...elem} link={linkCard} />
+              </div>
             ))}
           </div>
           <PaginationProvider>

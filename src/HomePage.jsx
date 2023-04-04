@@ -3,6 +3,8 @@ import { useGetMovies } from "./hooks/useGetMovies";
 import { useGetPeople } from "./hooks/useGetPeople";
 import { useGetMovie } from "./hooks/useGetMovie";
 import { useGetTvShows } from "./hooks/useGetTvShows";
+import { useContext } from "react";
+import { FavoritesContext } from "./contexts/favorites";
 
 export function HomePage() {
   const { movies: popularMovies } = useGetMovies("popular");
@@ -11,6 +13,7 @@ export function HomePage() {
   const { tvShows: popularTvShows } = useGetTvShows("popular");
   const { tvShows: topRatedTvShows } = useGetTvShows("top_rated");
   const { officialTrailerId } = useGetMovie(popularMovies[0]?.id);
+  const { favorites } = useContext(FavoritesContext);
 
   return (
     <>
@@ -52,6 +55,14 @@ export function HomePage() {
         linkCard="tv_shows"
         data={topRatedTvShows}
       />
+      {favorites.length > 0 && (
+        <CarouselSection
+          section="Favorites"
+          linkSection="tv_shows/top_rated"
+          linkCard="tv_shows"
+          data={favorites}
+        />
+      )}
     </>
   );
 }

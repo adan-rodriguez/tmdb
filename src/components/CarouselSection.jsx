@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Card } from "./Card";
 
-export function CarouselSection({ section, linkSection, linkCard, data = [] }) {
+export function CarouselSection({ section, linkSection, linkCard, data }) {
+  const carouselRef = useRef();
   const [translate, setTranslate] = useState(0);
   const [hiddenCarousel, setHiddenCarousel] = useState(0);
 
@@ -22,16 +23,24 @@ export function CarouselSection({ section, linkSection, linkCard, data = [] }) {
     });
   };
 
+  // useEffect(() => {
+  //   setHiddenCarousel(
+  //     Number(document.querySelector(".carousel").scrollWidth) -
+  //       Number(document.querySelector(".carousel").clientWidth) +
+  //       20
+  //   );
+  // }, [data]);
+
   useEffect(() => {
     setHiddenCarousel(
-      Number(document.querySelector(".carousel").scrollWidth) -
-        Number(document.querySelector(".carousel").clientWidth) +
+      Number(carouselRef.current.scrollWidth) -
+        Number(carouselRef.current.clientWidth) +
         20
     );
   }, [data]);
 
   return (
-    <section className="carousel overflow-hidden p-5 relative">
+    <section ref={carouselRef} className="overflow-hidden p-5 relative">
       <Link to={`/${linkSection}/1`}>
         <h2 className="inline-block font-black mb-2 text-xl bg-gradient-to-r from-light-green to-light-blue text-transparent bg-clip-text">
           {section}
@@ -42,27 +51,36 @@ export function CarouselSection({ section, linkSection, linkCard, data = [] }) {
           transform: `translateX(${translate}px)`,
           transitionDuration: ".5s",
         }}
-        className="slider flex gap-x-1"
+        className="flex gap-x-1"
       >
         {data.map((elem) => (
-          <Card key={elem.id} {...elem} link={linkCard} />
+          <div
+            key={elem.id}
+            className="min-w-[200px] hover:scale-[1.02] transition-transform max-w-[200px] opacity-80 hover:opacity-100 relative flex"
+          >
+            <Card {...elem} link={linkCard} />
+          </div>
         ))}
       </div>
-      <button
-        className="absolute left-8 top-1/2 font-black text-4xl hover:scale-[1.1] cursor-pointer w-16 h-16 rounded-full bg-slate-900 bg-opacity-70"
-        onClick={handleClickPrev}
-        disabled={translate === 0}
-        aria-label="Previous"
-      >
-        &lt;
-      </button>
-      <button
-        className="absolute right-8 top-1/2 font-black text-4xl hover:scale-[1.1] cursor-pointer w-16 h-16 rounded-full bg-slate-900 bg-opacity-70"
-        onClick={handleClickNext}
-        aria-label="Next"
-      >
-        &gt;
-      </button>
+      {hiddenCarousel > 20 && (
+        <>
+          <button
+            className="absolute left-8 top-1/2 font-black text-4xl hover:scale-[1.1] cursor-pointer w-16 h-16 rounded-full bg-slate-900 bg-opacity-70"
+            onClick={handleClickPrev}
+            disabled={translate === 0}
+            aria-label="Previous"
+          >
+            &lt;
+          </button>
+          <button
+            className="absolute right-8 top-1/2 font-black text-4xl hover:scale-[1.1] cursor-pointer w-16 h-16 rounded-full bg-slate-900 bg-opacity-70"
+            onClick={handleClickNext}
+            aria-label="Next"
+          >
+            &gt;
+          </button>
+        </>
+      )}
     </section>
   );
 }

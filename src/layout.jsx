@@ -2,6 +2,7 @@ import { Link, Outlet } from "react-router-dom";
 import logo from "./assets/images/logo-tmdb.svg";
 import useSumbitSearch from "./hooks/useSumbitSearch";
 import { search_type } from "./utils/search_type";
+import { FavoritesProvider } from "./contexts/favorites";
 
 export function RootLayout() {
   const { submitSearch } = useSumbitSearch();
@@ -47,7 +48,9 @@ export function RootLayout() {
         </form>
       </header>
       <main className="max-w-screen-2xl m-auto">
-        <Outlet />
+        <FavoritesProvider>
+          <Outlet />
+        </FavoritesProvider>
       </main>
     </>
   );
