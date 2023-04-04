@@ -1,10 +1,8 @@
-import { PaginationProvider } from "../contexts/pagination";
 import { Card } from "./Card";
 import { Pagination } from "./Pagination";
 
 export function ListGrid({
   children,
-  // data = [],
   data,
   pages,
   pageTitle,
@@ -29,9 +27,7 @@ export function ListGrid({
               </div>
             ))}
           </div>
-          <PaginationProvider>
-            <Pagination link={linkPagination} pages={pages} />
-          </PaginationProvider>
+          <Pagination link={linkPagination} pages={pages} />
         </>
       )}
     </div>

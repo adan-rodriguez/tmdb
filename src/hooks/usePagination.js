@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import { PaginationContext } from "../contexts/pagination";
+import { useParams } from "react-router-dom";
 
 export function usePagination() {
-  let { page } = useContext(PaginationContext);
+  const { page } = useParams();
   window.scrollTo(0, 0);
   return { page: Number(page) };
 }
