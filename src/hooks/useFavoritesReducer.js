@@ -1,7 +1,7 @@
 import { useReducer } from "react";
 import { favoritesInitialState, favoritesReducer } from "../reducers/favorites";
 
-export function useCartReducer() {
+export function useFavoritesReducer() {
   const [state, dispatch] = useReducer(favoritesReducer, favoritesInitialState);
 
   const addToFavorites = (item) =>

@@ -1,11 +1,11 @@
 import { createContext } from "react";
-import { useCartReducer } from "../hooks/useFavoritesReducer";
+import { useFavoritesReducer } from "../hooks/useFavoritesReducer";
 
 export const FavoritesContext = createContext();
 
 export function FavoritesProvider({ children }) {
   const { state, addToFavorites, removeFromFavorites, clearFavorites } =
-    useCartReducer();
+    useFavoritesReducer();
 
   return (
     <FavoritesContext.Provider

@@ -34,7 +34,10 @@ export function Card({ id, image, name, link, vote_average }) {
           )}
         </div>
       </Link>
-      <ButtonFavorites item={{ id, image, name }} isFavorite={isFavorite} />
+      <ButtonFavorites
+        item={{ id, image, name, type: link }}
+        isFavorite={isFavorite}
+      />
     </>
   );
 }

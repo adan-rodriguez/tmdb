@@ -17,6 +17,9 @@ import { TvShowPage } from "./pages/TvShowPage";
 import { TvShowsGenderPage } from "./pages/TvShowsGenderPage";
 import { PopularTvShowsPage } from "./pages/PopularTvShowsPage";
 import { TopRatedTvShowsPage } from "./pages/TopRatedTvShowsPage";
+import { FavoritesTvShowsPage } from "./pages/FavoritesTvShowsPage";
+import { FavoritesMoviesPage } from "./pages/FavoritesMoviesPage";
+import { FavoritesPeoplePage } from "./pages/FavoritesPeoplePage";
 
 const router = createBrowserRouter([
   {
@@ -78,6 +81,18 @@ const router = createBrowserRouter([
       {
         path: "tv_shows/popular/:page",
         element: <PopularTvShowsPage />,
+      },
+      {
+        path: "favorites/movies/:page",
+        element: <FavoritesMoviesPage />,
+      },
+      {
+        path: "favorites/people/:page",
+        element: <FavoritesPeoplePage />,
+      },
+      {
+        path: "favorites/tv_shows/:page",
+        element: <FavoritesTvShowsPage />,
       },
     ],
   },

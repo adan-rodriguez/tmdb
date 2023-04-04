@@ -16,7 +16,6 @@ export const favoritesReducer = (state, action) => {
     }
 
     case "removeFromFavorites": {
-      console.log(actionPayload);
       const newState = state.filter((item) => item.id != actionPayload);
       updateFavoritesLocalStorage(newState);
       return newState;

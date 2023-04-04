@@ -10,6 +10,7 @@ export function Pagination({ link, pages }) {
   for (let index = 1; index <= pagesToRender; index++) {
     paginationLinks.push(
       <Link
+        key={index}
         style={{
           width: "32px",
           backgroundColor: index === page ? "#90cea1" : null,

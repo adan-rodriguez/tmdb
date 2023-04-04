@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import { FavoritesContext } from "../contexts/favorites";
+import { useFavorites } from "../hooks/useFavorites";
 
 export function ButtonFavorites({ item, isFavorite }) {
-  const { addToFavorites, removeFromFavorites } = useContext(FavoritesContext);
+  const { addToFavorites, removeFromFavorites } = useFavorites();
 
   return (
     <>
