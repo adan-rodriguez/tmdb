@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import { useGetPerson } from "../hooks/useGetPerson";
+import no_image_available from "../assets/images/no-image-available.webp";
 
 export function PersonPage() {
   const {
@@ -10,13 +12,24 @@ export function PersonPage() {
     known_for,
     place_of_birth,
   } = useGetPerson();
+
+  const [heightHeader, setHeightClient] = useState(0);
+
+  useEffect(() => {
+    setHeightClient(document.querySelector("header").clientHeight);
+  }, []);
+
   return (
-    <div className="p-4 bg-zinc-900">
+    <div className={`p-4 bg-zinc-900 lg:min-h-[calc(100vh-${heightHeader}px)]`}>
       <h2 className="text-4xl font-black">{name}</h2>
-      <div className="mt-4 flex flex-col lg:flex-row gap-4">
+      <div className="mt-4 flex flex-col lg:flex-row lg:items-start gap-4">
         <img
-          className="w-full max-w-md inline"
-          src={`https://image.tmdb.org/t/p/original${image}`}
+          className="w-full aspect-[2/3] lg:w-60 lg:min-w-[15rem] max-w-md object-cover"
+          src={
+            image
+              ? `https://image.tmdb.org/t/p/original${image}`
+              : no_image_available
+          }
           alt={name}
         />
         <div className="flex flex-col gap-y-5">

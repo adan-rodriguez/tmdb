@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ButtonFavorites } from "./ButtonFavorites";
 import { useContext } from "react";
 import { FavoritesContext } from "../contexts/favorites";
+import no_image_available from "../assets/images/no-image-available.webp";
 
 export function Card({ id, image, name, link, vote_average }) {
   const { favorites } = useContext(FavoritesContext);
@@ -11,12 +12,12 @@ export function Card({ id, image, name, link, vote_average }) {
     <>
       <Link className="flex flex-col" to={`/${link}/${id}`}>
         <img
-          src={`https://image.tmdb.org/t/p/original${image}`}
+          src={image ? `https://image.tmdb.org/t/p/original${image}` : no_image_available}
           alt={name}
           loading="lazy"
-          className="aspect-[2/3]"
+          className="aspect-[2/3] object-cover"
         />
-        <div className="bg-zinc-900 p-3 grow flex flex-col justify-between">
+        <div className="bg-gradient-to-t from-black to-zinc-900 p-3 grow flex flex-col justify-between">
           <h2 className="font-bold">{name}</h2>
           {vote_average && (
             <div className="flex gap-x-3 items-center">
