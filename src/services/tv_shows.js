@@ -1,6 +1,6 @@
 import { API_KEY_TMDB } from "../utils/constants";
 
-export async function getTvShows(type, page) {
+export async function getTvShows(type, page = 1) {
   const response = await fetch(
     `https://api.themoviedb.org/3/tv/${type}?api_key=${API_KEY_TMDB}&page=${page}`
   );

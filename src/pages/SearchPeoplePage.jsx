@@ -3,6 +3,7 @@ import { useSearch } from "../hooks/useSearch";
 
 export function SearchPeoplePage() {
   const { query, data, pages } = useSearch("people");
+  console.log(data);
 
   return (
     <ListGrid
