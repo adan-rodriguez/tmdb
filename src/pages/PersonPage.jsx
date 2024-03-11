@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useGetPerson } from "../hooks/useGetPerson";
-import no_image_available from "../assets/images/no-image-available.webp";
 
 export function PersonPage() {
   const {
@@ -28,7 +27,7 @@ export function PersonPage() {
           src={
             image
               ? `https://image.tmdb.org/t/p/original${image}`
-              : no_image_available
+              : "/image404.avif"
           }
           alt={name}
         />

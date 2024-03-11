@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { ButtonFavorites } from "./ButtonFavorites";
 import { useContext } from "react";
 import { FavoritesContext } from "../contexts/favorites";
-import no_image_available from "../assets/images/no-image-available.webp";
 
 export function Card({ id, image, name, link, vote_average }) {
   const { favorites } = useContext(FavoritesContext);
@@ -12,7 +11,11 @@ export function Card({ id, image, name, link, vote_average }) {
     <>
       <Link className="flex flex-col" to={`/${link}/${id}`}>
         <img
-          src={image ? `https://image.tmdb.org/t/p/original${image}` : no_image_available}
+          src={
+            image
+              ? `https://image.tmdb.org/t/p/original${image}`
+              : "/image404.avif"
+          }
           alt={name}
           loading="lazy"
           className="aspect-[2/3] object-cover"

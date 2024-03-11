@@ -1,5 +1,4 @@
 import { Link, Outlet } from "react-router-dom";
-import logo from "./assets/images/logo-tmdb.svg";
 import useSumbitSearch from "./hooks/useSumbitSearch";
 import { search_type } from "./utils/search_type";
 import { FavoritesProvider } from "./contexts/favorites";
@@ -12,7 +11,7 @@ export function RootLayout() {
       <header className="max-w-screen-2xl m-auto p-4 flex flex-col justify-center items-center sm:flex-row sm:justify-between gap-5">
         <Link to="/" title="Home">
           <img
-            src={logo}
+            src="/tmdb.svg"
             alt="Logo de TMDB"
             style={{ minWidth: "192px" }}
             className="w-48"
