@@ -31,67 +31,67 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "movies/:movieId",
+        path: "/movies/:movieId",
         element: <MoviePage />,
       },
       {
-        path: "people/:personId",
+        path: "/people/:personId",
         element: <PersonPage />,
       },
       {
-        path: "tv_shows/:tvShowId",
+        path: "/tv_shows/:tvShowId",
         element: <TvShowPage />,
       },
       {
-        path: "movies/:genderName/:page",
+        path: "/movies/:genderName/:page",
         element: <MoviesGenderPage />,
       },
       {
-        path: "tv_shows/:genderName/:page",
+        path: "/tv_shows/:genderName/:page",
         element: <TvShowsGenderPage />,
       },
       {
-        path: "search/movies/:query/:page",
+        path: "/search/movies/:query/:page",
         element: <SearchMoviesPage />,
       },
       {
-        path: "search/tv_shows/:query/:page",
+        path: "/search/tv_shows/:query/:page",
         element: <SearchTvShowsPage />,
       },
       {
-        path: "search/people/:query/:page",
+        path: "/search/people/:query/:page",
         element: <SearchPeoplePage />,
       },
       {
-        path: "movies/popular/:page",
+        path: "/movies/popular/:page",
         element: <PopularMoviesPage />,
       },
       {
-        path: "movies/top_rated/:page",
+        path: "/movies/top_rated/:page",
         element: <TopRatedMoviesPage />,
       },
       {
-        path: "tv_shows/top_rated/:page",
+        path: "/tv_shows/top_rated/:page",
         element: <TopRatedTvShowsPage />,
       },
       {
-        path: "people/popular/:page",
+        path: "/people/popular/:page",
         element: <PopularPeoplePage />,
       },
       {
-        path: "tv_shows/popular/:page",
+        path: "/tv_shows/popular/:page",
         element: <PopularTvShowsPage />,
       },
       {
-        path: "favorites/movies/:page",
+        path: "/favorites/movies/:page",
         element: <FavoritesMoviesPage />,
       },
       {
-        path: "favorites/people/:page",
+        path: "/favorites/people/:page",
         element: <FavoritesPeoplePage />,
       },
       {
-        path: "favorites/tv_shows/:page",
+        path: "/favorites/tv_shows/:page",
         element: <FavoritesTvShowsPage />,
       },
     ],
