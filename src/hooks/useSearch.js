@@ -10,7 +10,6 @@ export function useSearch(type) {
 
   const obtainData = async () => {
     const { data, pages } = await searchData(search_type[type], query, page);
-    console.log(data);
     setData(data);
     setPages(pages);
   };
