@@ -17,6 +17,7 @@ import { PopularTvShowsPage } from "./pages/PopularTvShowsPage";
 import { FavoritesMoviesPage } from "./pages/FavoritesMoviesPage";
 import { FavoritesPeoplePage } from "./pages/FavoritesPeoplePage";
 import { FavoritesTvShowsPage } from "./pages/FavoritesTvShowsPage";
+import { ErrorPage } from "./ErrorPage";
 
 export function App() {
   return (
@@ -72,6 +73,7 @@ export function App() {
           path="/favorites/tv_shows/:page"
           element={<FavoritesTvShowsPage />}
         />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </RootLayout>
   );
