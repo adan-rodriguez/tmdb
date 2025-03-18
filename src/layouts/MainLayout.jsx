@@ -1,7 +1,7 @@
-import { FavoritesProvider } from "./contexts/favorites";
-import { Header } from "./components/Header";
+import { FavoritesProvider } from "../contexts/favorites";
+import { Header } from "../components/Header";
 
-export function RootLayout({ children }) {
+export function MainLayout({ children }) {
   return (
     <>
       <Header />

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Card } from "./Card";
 import { useEffect } from "react";
 
-export function CarouselSection({ section, linkSection, linkCard, data }) {
+export function Carousel({ title, type, topic, data }) {
   const carouselSection = useRef(null);
   const carousel = useRef(null);
 
@@ -75,9 +75,9 @@ export function CarouselSection({ section, linkSection, linkCard, data }) {
 
   return (
     <section ref={carouselSection} className="overflow-hidden p-5 relative">
-      <Link to={`/${linkSection}/1`}>
+      <Link to={`/${type + "/" + topic}/1`}>
         <h2 className="inline-block font-black mb-2 text-xl bg-gradient-to-r from-light-green to-light-blue text-transparent bg-clip-text">
-          {section}
+          {title}
         </h2>
       </Link>
       <div
@@ -92,9 +92,9 @@ export function CarouselSection({ section, linkSection, linkCard, data }) {
         {data.map((elem) => (
           <div
             key={elem.id}
-            className="min-w-[200px] transition-transform max-w-[200px] opacity-80 hover:opacity-100 relative flex"
+            className="min-w-52 max-w-52 transition-transform opacity-80 hover:opacity-100 relative flex"
           >
-            <Card {...elem} link={linkCard} />
+            <Card {...elem} type={type} />
           </div>
         ))}
       </div>

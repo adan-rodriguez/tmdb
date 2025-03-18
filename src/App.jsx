@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import { HomePage } from "./HomePage";
-import { RootLayout } from "./layout";
+import { HomePage } from "./pages/HomePage";
+import { MainLayout } from "./layouts/MainLayout";
 import { MoviePage } from "./pages/MoviePage";
 import { PersonPage } from "./pages/PersonPage";
 import { TvShowPage } from "./pages/TvShowPage";
@@ -17,11 +17,11 @@ import { PopularTvShowsPage } from "./pages/PopularTvShowsPage";
 import { FavoritesMoviesPage } from "./pages/FavoritesMoviesPage";
 import { FavoritesPeoplePage } from "./pages/FavoritesPeoplePage";
 import { FavoritesTvShowsPage } from "./pages/FavoritesTvShowsPage";
-import { ErrorPage } from "./ErrorPage";
+import { NotFoundPage } from "./pages/NotFoundPage";
 
 export function App() {
   return (
-    <RootLayout>
+    <MainLayout>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/movies/:movieId" element={<MoviePage />} />
@@ -73,8 +73,8 @@ export function App() {
           path="/favorites/tv_shows/:page"
           element={<FavoritesTvShowsPage />}
         />
-        <Route path="*" element={<ErrorPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
-    </RootLayout>
+    </MainLayout>
   );
 }

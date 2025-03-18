@@ -1,4 +1,4 @@
-export function ErrorPage() {
+export function NotFoundPage() {
   return (
     <div id="error-page">
       <h1>Oops!</h1>

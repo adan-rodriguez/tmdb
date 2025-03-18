@@ -3,13 +3,13 @@ import { ButtonFavorites } from "./ButtonFavorites";
 import { useContext } from "react";
 import { FavoritesContext } from "../contexts/favorites";
 
-export function Card({ id, image, name, link, vote_average }) {
+export function Card({ id, image, name, type, vote_average }) {
   const { favorites } = useContext(FavoritesContext);
   const isFavorite = favorites.some((item) => item.id == id);
 
   return (
     <>
-      <Link className="flex flex-col" to={`/${link}/${id}`}>
+      <Link className="flex flex-col" to={`/${type}/${id}`}>
         <img
           src={
             image
@@ -39,7 +39,7 @@ export function Card({ id, image, name, link, vote_average }) {
         </div>
       </Link>
       <ButtonFavorites
-        item={{ id, image, name, type: link }}
+        item={{ id, image, name, type }}
         isFavorite={isFavorite}
       />
     </>

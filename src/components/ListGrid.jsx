@@ -23,7 +23,7 @@ export function ListGrid({
                 key={elem.id}
                 className="min-w-[200px] hover:scale-[1.02] transition-transform max-w-xl opacity-80 hover:opacity-100 relative flex"
               >
-                <Card {...elem} link={linkCard} />
+                <Card {...elem} type={linkCard} />
               </div>
             ))}
           </div>
