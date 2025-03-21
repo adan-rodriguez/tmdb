@@ -1,27 +1,28 @@
 import { API_KEY_TMDB } from "../utils/constants";
 
-export async function getTvShows(type, page = 1) {
+export async function getTvShows({ topic, pageParam }) {
   const response = await fetch(
-    `https://api.themoviedb.org/3/tv/${type}?api_key=${API_KEY_TMDB}&page=${page}`
+    `https://api.themoviedb.org/3/tv/${topic}?api_key=${API_KEY_TMDB}&page=${pageParam}`
   );
   const data = await response.json();
-  const { results, total_pages: pages } = data;
+  const { results, page } = data;
   return {
-    pages,
     tvShows: results.map((result) => ({
       id: result.id,
       name: result.name,
       image: result.poster_path, // string or null
       vote_average: result.vote_average,
     })),
+    page,
   };
 }
 
-export async function getTvShow(tvShowId) {
+export async function getTvShow({ id }) {
   const response = await fetch(
-    `https://api.themoviedb.org/3/tv/${tvShowId}?api_key=${API_KEY_TMDB}&append_to_response=videos,credits`
+    `https://api.themoviedb.org/3/tv/${id}?api_key=${API_KEY_TMDB}&append_to_response=videos,credits`
   );
   const data = await response.json();
+
   return {
     name: data.name,
     image: data.poster_path, // string or null

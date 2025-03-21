@@ -1,22 +1,21 @@
-import { ListGrid } from "../components/ListGrid";
+import { Grid } from "../components/Grid";
 import { useSearch } from "../hooks/useSearch";
 
 export function SearchPeoplePage() {
   const { query, data, pages } = useSearch("people");
-  console.log(data);
 
   return (
-    <ListGrid
+    <Grid
       data={data}
       pages={pages}
-      pageTitle="People"
-      linkCard="people"
-      linkPagination={`search/people/${query}`}
+      title="People"
+      type="people"
+      topic={`search/people/${query}`}
     >
       <h2 className="text-lg mb-2">
         {data.length === 0 ? "No results " : "Results "} for{" "}
         <strong>&quot;{query}&quot;</strong>
       </h2>
-    </ListGrid>
+    </Grid>
   );
 }

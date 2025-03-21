@@ -1,16 +1,25 @@
-import { ListGrid } from "../components/ListGrid";
+import { Grid } from "../components/Grid";
 import { useGetPeople } from "../hooks/useGetPeople";
 
 export function PopularPeoplePage() {
-  const { people, pages } = useGetPeople();
+  const { isLoading, isError, people, fetchNextPage, hasNextPage } =
+    useGetPeople();
 
   return (
-    <ListGrid
-      data={people}
-      pages={pages}
-      pageTitle="Popular people"
-      linkCard="people"
-      linkPagination="people/popular"
-    />
+    <>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : isError ? (
+        <p>Error</p>
+      ) : (
+        <Grid
+          data={people}
+          title="Popular people"
+          type="people"
+          fetchNextPage={fetchNextPage}
+          hasNextPage={hasNextPage}
+        />
+      )}
+    </>
   );
 }

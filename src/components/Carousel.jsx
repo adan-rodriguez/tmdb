@@ -75,7 +75,7 @@ export function Carousel({ title, type, topic, data }) {
 
   return (
     <section ref={carouselSection} className="overflow-hidden p-5 relative">
-      <Link to={`/${type + "/" + topic}/1`}>
+      <Link to={`/${type + "/" + topic}`}>
         <h2 className="inline-block font-black mb-2 text-xl bg-gradient-to-r from-light-green to-light-blue text-transparent bg-clip-text">
           {title}
         </h2>
@@ -89,12 +89,18 @@ export function Carousel({ title, type, topic, data }) {
         }}
         className="flex gap-x-1"
       >
-        {data.map((elem) => (
+        {data.map((item) => (
           <div
-            key={elem.id}
+            key={item.id}
             className="min-w-52 max-w-52 transition-transform opacity-80 hover:opacity-100 relative flex"
           >
-            <Card {...elem} type={type} />
+            <Card
+              id={item.id}
+              type={type}
+              name={item.name}
+              image={item.image}
+              vote_average={item.vote_average}
+            />
           </div>
         ))}
       </div>

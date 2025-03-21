@@ -1,5 +1,5 @@
 export const search_type = {
   movies: "movie",
-  tv_shows: "tv",
+  tv: "tv",
   people: "person",
 };

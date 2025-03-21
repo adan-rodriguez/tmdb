@@ -1,21 +1,15 @@
-import { ListGrid } from "../components/ListGrid";
+import { Grid } from "../components/Grid";
 import { useSearch } from "../hooks/useSearch";
 
 export function SearchTvShowsPage() {
-  const { query, data, pages } = useSearch("tv_shows");
+  const { query, data } = useSearch("tv");
 
   return (
-    <ListGrid
-      data={data}
-      pages={pages}
-      pageTitle="Tv Shows"
-      linkCard="tv_shows"
-      linkPagination={`search/tv_shows/${query}`}
-    >
+    <Grid data={data} title="Tv Shows" type="tv">
       <h2 className="text-lg mb-2">
         {data.length === 0 ? "No results " : "Results "} for{" "}
         <strong>&quot;{query}&quot;</strong>
       </h2>
-    </ListGrid>
+    </Grid>
   );
 }

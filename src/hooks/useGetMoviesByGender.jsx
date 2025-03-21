@@ -1,23 +1,25 @@
-import { getPeople } from "@/services/people";
+import { getData } from "@/services/discover";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
-export function useGetPeople() {
+export function useGetMoviesByGender({ id }) {
   const { isLoading, isError, data, fetchNextPage, hasNextPage } =
     useInfiniteQuery({
-      queryKey: ["people"],
-      queryFn: async ({ pageParam }) => await getPeople({ pageParam }),
+      queryKey: ["movies", id],
+      queryFn: async ({ pageParam }) =>
+        await getData({ type: "movie", genderId: id, pageParam }),
       initialPageParam: 1,
       getNextPageParam: (lastPage) => {
         const nextCursor = lastPage.page + 1;
         return nextCursor > 500 ? undefined : lastPage.page + 1; // TMDB devuelve como máximo 500 páginas
       },
+      // refetchOnWindowFocus: false,
       staleTime: 1000 * 60 * 10, // 10 minutos
     });
 
   return {
     isLoading,
     isError,
-    people: data?.pages.flatMap((page) => page.people),
+    movies: data?.pages.flatMap((page) => page.data),
     fetchNextPage,
     hasNextPage,
   };

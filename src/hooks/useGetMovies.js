@@ -1,21 +1,25 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { getMovies } from "../services/movies";
+import { useInfiniteQuery } from "@tanstack/react-query";
 
-export function useGetMovies(type) {
-  const [movies, setMovies] = useState([]);
-  const [pages, setPages] = useState(0);
-  const { page } = useParams();
+export function useGetMovies({ topic }) {
+  const { isLoading, isError, data, fetchNextPage, hasNextPage } =
+    useInfiniteQuery({
+      queryKey: ["movies", topic],
+      queryFn: async ({ pageParam }) => await getMovies({ topic, pageParam }),
+      initialPageParam: 1,
+      getNextPageParam: (lastPage) => {
+        const nextCursor = lastPage.page + 1;
+        return nextCursor > 500 ? undefined : lastPage.page + 1; // TMDB devuelve como máximo 500 páginas
+      },
+      // refetchOnWindowFocus: false,
+      staleTime: 1000 * 60 * 10, // 10 minutos
+    });
 
-  const obtainMovies = async () => {
-    const { movies, pages } = await getMovies(type, page);
-    setMovies(movies);
-    setPages(pages);
+  return {
+    isLoading,
+    isError,
+    movies: data?.pages.flatMap((page) => page.movies),
+    fetchNextPage,
+    hasNextPage,
   };
-
-  useEffect(() => {
-    obtainMovies();
-  }, [page]);
-
-  return { movies, pages };
 }

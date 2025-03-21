@@ -1,16 +1,26 @@
-import { ListGrid } from "../components/ListGrid";
+import { Grid } from "../components/Grid";
 import { useGetMovies } from "../hooks/useGetMovies";
 
 export function TopRatedMoviesPage() {
-  const { pages, movies } = useGetMovies("top_rated");
+  const { isLoading, isError, movies, fetchNextPage, hasNextPage } =
+    useGetMovies({ topic: "top_rated" });
 
   return (
-    <ListGrid
-      data={movies}
-      pages={pages}
-      pageTitle="Top rated movies"
-      linkCard="movies"
-      linkPagination="movies/top_rated"
-    />
+    <>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : isError ? (
+        <p>Error</p>
+      ) : (
+        <Grid
+          data={movies}
+          title="Top rated movies"
+          type="movies"
+          topic="top_rated"
+          fetchNextPage={fetchNextPage}
+          hasNextPage={hasNextPage}
+        />
+      )}
+    </>
   );
 }

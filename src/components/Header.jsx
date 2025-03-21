@@ -25,7 +25,7 @@ export function Header() {
           >
             <option value="movies">Movies</option>
             <option value="people">People</option>
-            <option value="tv_shows">Tv Shows</option>
+            <option value="tv">Tv</option>
           </select>
           <input
             className="h-7 px-3 focus:outline-0 tracking-wide grow"

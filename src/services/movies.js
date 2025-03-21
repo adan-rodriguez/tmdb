@@ -1,25 +1,26 @@
 import { API_KEY_TMDB } from "../utils/constants";
 
-export async function getMovies(q, page = 1) {
+export async function getMovies({ topic, pageParam }) {
   const response = await fetch(
-    `https://api.themoviedb.org/3/movie/${q}?api_key=${API_KEY_TMDB}&page=${page}`
+    `https://api.themoviedb.org/3/movie/${topic}?api_key=${API_KEY_TMDB}&page=${pageParam}` // 20 resultados como máximo. 500 páginas como máximo.
   );
+  // https://api.themoviedb.org/3/movie/${topic}?api_key=${API_KEY_TMDB} === https://api.themoviedb.org/3/movie/${topic}?api_key=${API_KEY_TMDB}&page=1
   const data = await response.json();
-  const { results, total_pages: pages } = data;
+  const { results, page } = data;
   return {
-    pages,
     movies: results.map((result) => ({
       id: result.id,
       name: result.title,
       image: result.poster_path, // string or null
       vote_average: result.vote_average,
     })),
+    page,
   };
 }
 
-export async function getMovie(movieId) {
+export async function getMovie({ id }) {
   const response = await fetch(
-    `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY_TMDB}&append_to_response=videos,credits`
+    `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY_TMDB}&append_to_response=videos,credits`
   );
   const data = await response.json();
   const director = data.credits.crew.find((_) => _.job === "Director");
