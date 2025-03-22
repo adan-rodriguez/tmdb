@@ -1,22 +1,26 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { searchData } from "../services/search";
-import { search_type } from "../utils/search_type";
 
-export function useSearch(type) {
-  const [data, setData] = useState([]);
-  const [pages, setPages] = useState(0);
-  const { query, page } = useParams();
+export function useSearch({ type, query }) {
+  const { isLoading, isError, data, fetchNextPage, hasNextPage } =
+    useInfiniteQuery({
+      queryKey: ["search", type, query],
+      queryFn: async ({ pageParam }) =>
+        await searchData({ type, query, pageParam }),
+      initialPageParam: 1,
+      getNextPageParam: (lastPage) => {
+        const nextCursor = lastPage.page + 1;
+        return nextCursor > 500 ? undefined : lastPage.page + 1; // TMDB devuelve como máximo 500 páginas
+      },
+      // refetchOnWindowFocus: false,
+      staleTime: 1000 * 60 * 10, // 10 minutos
+    });
 
-  const obtainData = async () => {
-    const { data, pages } = await searchData(search_type[type], query, page);
-    setData(data);
-    setPages(pages);
+  return {
+    isLoading,
+    isError,
+    data: data?.pages.flatMap((page) => page.data),
+    fetchNextPage,
+    hasNextPage,
   };
-
-  useEffect(() => {
-    obtainData();
-  }, [query, page]);
-
-  return { query, data, pages };
 }

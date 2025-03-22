@@ -5,9 +5,9 @@ export function useMainSearch() {
 
   const search = (e) => {
     e.preventDefault();
-    const search_type = e.target.search_type.value;
-    const query = e.target.search.value;    
-    navigate(`/search/${search_type}/${query}/1`); 
+    const searchType = e.target.searchType.value;
+    const query = e.target.search.value;
+    navigate(`/search/${searchType}/${query}`);
   };
 
   return { search };

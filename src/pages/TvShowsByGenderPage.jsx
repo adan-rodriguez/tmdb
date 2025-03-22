@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom";
 import { Grid } from "../components/Grid";
 import tvGenres from "@/utils/tvGenres.json";
-import { useGetTvByGender } from "@/hooks/useGetTvByGender";
+import { useGetTvShowsByGender } from "@/hooks/useGetTvShowsByGender";
 
 export function TvShowsByGenderPage() {
   const { id } = useParams();
-  const { isLoading, isError, tv, fetchNextPage, hasNextPage } =
-    useGetTvByGender({ id });
+  const { isLoading, isError, tvShows, fetchNextPage, hasNextPage } =
+    useGetTvShowsByGender({ id });
 
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>Error</p>;
@@ -15,8 +15,8 @@ export function TvShowsByGenderPage() {
 
   return (
     <Grid
-      data={tv}
-      title={`Tv | ${tvGender}`}
+      data={tvShows}
+      title={`Tv shows | ${tvGender}`}
       type="tv"
       fetchNextPage={fetchNextPage}
       hasNextPage={hasNextPage}

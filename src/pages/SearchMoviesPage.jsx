@@ -1,16 +1,24 @@
+import { useParams } from "react-router-dom";
 import { Grid } from "../components/Grid";
 import { useSearch } from "../hooks/useSearch";
 
 export function SearchMoviesPage() {
-  const { query, data, pages } = useSearch("movies");
+  const { query } = useParams();
+  const { isLoading, isError, data, fetchNextPage, hasNextPage } = useSearch({
+    type: "movie",
+    query,
+  });
+
+  if (isLoading) return <p>Loading...</p>;
+  if (isError) return <p>Error</p>;
 
   return (
     <Grid
       data={data}
-      pages={pages}
       title="Movies"
       type="movies"
-      topic={`search/movies/${query}`}
+      fetchNextPage={fetchNextPage}
+      hasNextPage={hasNextPage}
     >
       <h2 className="text-lg mb-2">
         {data.length === 0 ? "No results " : "Results "} for{" "}

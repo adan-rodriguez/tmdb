@@ -1,10 +1,10 @@
-import { getTvShows } from "../services/tv_shows";
+import { getTvShows } from "../services/tvShows";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
 export function useGetTvShows({ topic }) {
   const { isLoading, isError, data, fetchNextPage, hasNextPage } =
     useInfiniteQuery({
-      queryKey: ["tv_shows", topic],
+      queryKey: ["tvShows", topic],
       queryFn: async ({ pageParam }) => await getTvShows({ topic, pageParam }),
       initialPageParam: 1,
       getNextPageParam: (lastPage) => {

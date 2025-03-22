@@ -26,15 +26,9 @@ export function App() {
         <Route path="/tv/:id" element={<TvShowPage />} />
         <Route path="/movies/genres/:id" element={<MoviesByGenderPage />} />
         <Route path="/tv/genres/:id" element={<TvShowsByGenderPage />} />
-        <Route
-          path="/search/movies/:query/:page"
-          element={<SearchMoviesPage />}
-        />
-        <Route path="/search/tv/:query/:page" element={<SearchTvShowsPage />} />
-        <Route
-          path="/search/people/:query/:page"
-          element={<SearchPeoplePage />}
-        />
+        <Route path="/search/movies/:query" element={<SearchMoviesPage />} />
+        <Route path="/search/tv/:query" element={<SearchTvShowsPage />} />
+        <Route path="/search/people/:query" element={<SearchPeoplePage />} />
         <Route path="/movies/popular" element={<PopularMoviesPage />} />
         <Route path="/movies/top_rated" element={<TopRatedMoviesPage />} />
         <Route path="/tv/popular" element={<PopularTvShowsPage />} />

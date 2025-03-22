@@ -1,10 +1,10 @@
 import { getData } from "@/services/discover";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
-export function useGetTvByGender({ id }) {
+export function useGetTvShowsByGender({ id }) {
   const { isLoading, isError, data, fetchNextPage, hasNextPage } =
     useInfiniteQuery({
-      queryKey: ["tv", id],
+      queryKey: ["tvShows", id],
       queryFn: async ({ pageParam }) =>
         await getData({ type: "tv", genderId: id, pageParam }),
       initialPageParam: 1,
@@ -19,7 +19,7 @@ export function useGetTvByGender({ id }) {
   return {
     isLoading,
     isError,
-    tv: data?.pages.flatMap((page) => page.data),
+    tvShows: data?.pages.flatMap((page) => page.data),
     fetchNextPage,
     hasNextPage,
   };
