@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       gridTemplateColumns: {
-        custom: "repeat(auto-fit, minmax(250px, 1fr))",
+        custom: "repeat(auto-fill, minmax(250px, 1fr))",
       },
       colors: {
         "dark-blue": "#0d253f",

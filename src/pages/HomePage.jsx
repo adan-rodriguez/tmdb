@@ -33,6 +33,7 @@ export function HomePage() {
           allowFullScreen
         ></iframe>
       )}
+
       {isLoadingPopularMovies ? (
         <p>Loading...</p>
       ) : (
@@ -43,6 +44,7 @@ export function HomePage() {
           data={popularMovies}
         />
       )}
+
       {isLoadingTopRatedMovies ? (
         <p>Loading...</p>
       ) : (

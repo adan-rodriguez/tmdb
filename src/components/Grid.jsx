@@ -17,10 +17,7 @@ export function Grid({
       {data.length > 0 && (
         <div className="grid grid-cols-custom gap-2">
           {data.map((item) => (
-            <div
-              key={item.id}
-              className="min-w-[200px] hover:scale-[1.02] transition-transform max-w-xl opacity-80 hover:opacity-100 relative flex"
-            >
+            <div key={item.id}>
               <Card
                 id={item.id}
                 type={type}

@@ -26,3 +26,7 @@ a {
 ul {
   list-style-type: none;
 }
+
+/* .swiper-wrapper:has(> .swiper-slide:hover) > .swiper-slide:not(:hover) {
+  filter: grayscale(1);
+} */

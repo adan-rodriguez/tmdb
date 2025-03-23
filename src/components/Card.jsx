@@ -2,7 +2,10 @@ import { Link } from "react-router-dom";
 
 export function Card({ id, image, name, type, vote_average }) {
   return (
-    <Link className="flex flex-col" to={`/${type}/${id}`}>
+    <Link
+      className="flex flex-col relative rounded group overflow-hidden"
+      to={`/${type}/${id}`}
+    >
       <img
         src={
           image
@@ -11,10 +14,12 @@ export function Card({ id, image, name, type, vote_average }) {
         }
         alt={name}
         loading="lazy"
-        className="aspect-[2/3] object-cover"
+        className="aspect-[2/3] object-cover group-hover:scale-105 transition-transform duration-300"
       />
-      <div className="bg-gradient-to-t from-black to-zinc-900 p-3 grow flex flex-col justify-between">
-        <h2 className="font-bold">{name}</h2>
+      <div className="z-10 p-3 grow flex flex-col justify-end absolute top-2/4 bottom-0 right-0 left-0 bg-gradient-to-t from-black to-transparent ">
+        <h2 className="font-bold text-nowrap overflow-hidden text-ellipsis">
+          {name}
+        </h2>
         {vote_average && ( // person no tiene vote_average
           <div className="flex gap-x-3 items-center">
             <svg
