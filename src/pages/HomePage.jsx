@@ -21,70 +21,59 @@ export function HomePage() {
 
   return (
     <>
-      {isPendingMovie ? (
+      {/* {isPendingMovie ? (
         <p>Loading...</p>
-      ) : (
+      ) : ( */}
         <iframe
-          className="w-full h-96"
-          src={`https://www.youtube.com/embed/${movie.officialTrailerId}?autoplay=1&controls=0&rel=0&showinfo=0`}
+          className="w-full h-96 bg-black"
+          src={`https://www.youtube.com/embed/${movie?.officialTrailerId}?autoplay=1&controls=0&rel=0&showinfo=0`}
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
         ></iframe>
-      )}
+      {/* )} */}
 
-      {isLoadingPopularMovies ? (
-        <p>Loading...</p>
-      ) : (
+      
         <Carousel
           title="Popular Movies"
           type="movies"
           topic="popular"
           data={popularMovies}
+          isLoading={isLoadingPopularMovies}
         />
-      )}
-
-      {isLoadingTopRatedMovies ? (
-        <p>Loading...</p>
-      ) : (
+      
         <Carousel
           title="Top rated Movies"
           type="movies"
           topic="top_rated"
           data={topRatedMovies}
+          isLoading={isLoadingTopRatedMovies}
         />
-      )}
-      {isLoadingPopularPeople ? (
-        <p>Loading...</p>
-      ) : (
+      
         <Carousel
           title="Popular People"
           type="people"
           topic="popular"
           data={popularPeople}
+          isLoading={isLoadingPopularPeople}
         />
-      )}
-      {isLoadingPopularTvShows ? (
-        <p>Loading...</p>
-      ) : (
+      
         <Carousel
           title="Popular Tv Shows"
           type="tv"
           topic="popular"
           data={popularTvShows}
+          isLoading={isLoadingPopularTvShows}
         />
-      )}
-      {isLoadingTopRatedTvShows ? (
-        <p>Loading...</p>
-      ) : (
+      
         <Carousel
           title="Top rated Tv Shows"
           type="tv"
           topic="top_rated"
           data={topRatedTvShows}
+          isLoading={isLoadingTopRatedTvShows}
         />
-      )}
     </>
   );
 }
