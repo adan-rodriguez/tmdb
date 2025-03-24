@@ -15,12 +15,9 @@ export function Header() {
         />
       </Link>
       <search className="w-full max-w-screen-sm">
-        <form
-          className="text-black text-sm tracking-wide flex"
-          onSubmit={search}
-        >
+        <form className="text-black flex" onSubmit={search}>
           <select
-            className="h-7 px-2 focus:outline-0 tracking-wide rounded-l-2xl"
+            className="h-7 px-2 focus:outline-0 rounded-l-2xl"
             name="searchType"
           >
             <option value="movies">Movies</option>
@@ -28,13 +25,13 @@ export function Header() {
             <option value="tv">Tv</option>
           </select>
           <input
-            className="h-7 px-3 focus:outline-0 tracking-wide grow"
+            className="h-7 px-3 focus:outline-0 grow"
             type="search"
             name="search"
             placeholder="Search in TMDB"
           />
           <button
-            className="bg-light-blue font-normal h-7 px-3 tracking-wide rounded-r-2xl"
+            className="bg-light-blue h-7 px-3 rounded-r-2xl"
             type="submit"
           >
             Search

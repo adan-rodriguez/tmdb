@@ -15,12 +15,18 @@ import { TopRatedTvShowsPage } from "./pages/TopRatedTvShowsPage";
 import { PopularPeoplePage } from "./pages/PopularPeoplePage";
 import { PopularTvShowsPage } from "./pages/PopularTvShowsPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
+import { Auth } from "./pages/Auth";
+import { Approved } from "./pages/Approved";
+import { Account } from "./pages/Account";
 
 export function App() {
   return (
     <MainLayout>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/auth" element={<Auth />} />
+        <Route path="/approved" element={<Approved />} />
+        <Route path="/account" element={<Account />} />
         <Route path="/movies/:id" element={<MoviePage />} />
         <Route path="/people/:id" element={<PersonPage />} />
         <Route path="/tv/:id" element={<TvShowPage />} />
