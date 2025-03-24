@@ -8,7 +8,6 @@ export function TvShowsByGenderPage() {
   const { isLoading, isError, tvShows, fetchNextPage, hasNextPage } =
     useGetTvShowsByGender({ id });
 
-  if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>Error</p>;
 
   const tvGender = tvGenres.find((tvGender) => tvGender.id == id).name;
@@ -20,6 +19,7 @@ export function TvShowsByGenderPage() {
       type="tv"
       fetchNextPage={fetchNextPage}
       hasNextPage={hasNextPage}
+      isLoading={isLoading}
     />
   );
 }

@@ -5,21 +5,16 @@ export function PopularTvShowsPage() {
   const { isLoading, isError, tvShows, fetchNextPage, hasNextPage } =
     useGetTvShows({ topic: "popular" });
 
+  if (isError) return <p>Error</p>;
+
   return (
-    <>
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : isError ? (
-        <p>Error</p>
-      ) : (
-        <Grid
-          data={tvShows}
-          title="Popular Tv Shows"
-          type="tv"
-          fetchNextPage={fetchNextPage}
-          hasNextPage={hasNextPage}
-        />
-      )}
-    </>
+    <Grid
+      data={tvShows}
+      title="Popular Tv Shows"
+      type="tv"
+      fetchNextPage={fetchNextPage}
+      hasNextPage={hasNextPage}
+      isLoading={isLoading}
+    />
   );
 }

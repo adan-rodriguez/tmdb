@@ -8,7 +8,6 @@ export function MoviesByGenderPage() {
   const { isLoading, isError, movies, fetchNextPage, hasNextPage } =
     useGetMoviesByGender({ id });
 
-  if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>Error</p>;
 
   const movieGender = moviesGenres.find(
@@ -22,6 +21,7 @@ export function MoviesByGenderPage() {
       type="movies"
       fetchNextPage={fetchNextPage}
       hasNextPage={hasNextPage}
+      isLoading={isLoading}
     />
   );
 }

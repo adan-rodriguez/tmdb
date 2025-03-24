@@ -5,22 +5,17 @@ export function TopRatedMoviesPage() {
   const { isLoading, isError, movies, fetchNextPage, hasNextPage } =
     useGetMovies({ topic: "top_rated" });
 
+  if (isError) return <p>Error</p>;
+
   return (
-    <>
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : isError ? (
-        <p>Error</p>
-      ) : (
-        <Grid
-          data={movies}
-          title="Top rated movies"
-          type="movies"
-          topic="top_rated"
-          fetchNextPage={fetchNextPage}
-          hasNextPage={hasNextPage}
-        />
-      )}
-    </>
+    <Grid
+      data={movies}
+      title="Top rated movies"
+      type="movies"
+      topic="top_rated"
+      fetchNextPage={fetchNextPage}
+      hasNextPage={hasNextPage}
+      isLoading={isLoading}
+    />
   );
 }

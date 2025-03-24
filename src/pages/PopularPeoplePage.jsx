@@ -5,21 +5,16 @@ export function PopularPeoplePage() {
   const { isLoading, isError, people, fetchNextPage, hasNextPage } =
     useGetPeople();
 
+  if (isError) return <p>Error</p>;
+
   return (
-    <>
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : isError ? (
-        <p>Error</p>
-      ) : (
-        <Grid
-          data={people}
-          title="Popular people"
-          type="people"
-          fetchNextPage={fetchNextPage}
-          hasNextPage={hasNextPage}
-        />
-      )}
-    </>
+    <Grid
+      data={people}
+      title="Popular people"
+      type="people"
+      fetchNextPage={fetchNextPage}
+      hasNextPage={hasNextPage}
+      isLoading={isLoading}
+    />
   );
 }

@@ -7,6 +7,7 @@ export function Grid({
   type,
   fetchNextPage,
   hasNextPage,
+  isLoading,
 }) {
   return (
     <div className="p-5">
@@ -14,21 +15,23 @@ export function Grid({
         {title}
       </h1>
       {children}
-      {data.length > 0 && (
         <div className="grid grid-cols-custom gap-2">
-          {data.map((item) => (
-            <div key={item.id}>
-              <Card
-                id={item.id}
-                type={type}
-                name={item.name}
-                image={item.image}
-                vote_average={item.vote_average}
-              />
-            </div>
-          ))}
+          {isLoading
+            ? Array.from({ length: 20 }, (_, i) => (
+                  <div className="aspect-[2/3] bg-gray-300 rounded animate-pulse" key={i}></div>
+              ))
+            : data.map((item) => (
+                <div key={item.id}>
+                  <Card
+                    id={item.id}
+                    type={type}
+                    name={item.name}
+                    image={item.image}
+                    vote_average={item.vote_average}
+                  />
+                </div>
+              ))}
         </div>
-      )}
       {hasNextPage && (
         <button onClick={fetchNextPage}>Cargar más resultados</button>
       )}
