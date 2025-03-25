@@ -3,11 +3,10 @@ import { useGetMovie } from "../hooks/useGetMovie";
 
 export function MoviePage() {
   const { id } = useParams();
-  const { movie, isLoading } = useGetMovie({ id });
+  const { movie, isLoading, isError } = useGetMovie({ id });
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  if (isLoading) return <p>Loading...</p>;
+  if (isError) return <p>Error</p>;
 
   return (
     <div className="bg-zinc-900">
