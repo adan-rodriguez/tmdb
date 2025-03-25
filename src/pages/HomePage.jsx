@@ -7,7 +7,7 @@ import { useGetTvShows } from "../hooks/useGetTvShows";
 export function HomePage() {
   const { isLoading: isLoadingPopularMovies, movies: popularMovies = [] } =
     useGetMovies({ topic: "popular" });
-  const { isPending: isPendingMovie, movie } = useGetMovie({
+  const { movie } = useGetMovie({
     id: popularMovies[0]?.id,
   });
   const { isLoading: isLoadingTopRatedMovies, movies: topRatedMovies } =
@@ -21,59 +21,54 @@ export function HomePage() {
 
   return (
     <>
-      {/* {isPendingMovie ? (
-        <p>Loading...</p>
-      ) : ( */}
-        <iframe
-          className="w-full h-96 bg-black"
-          src={`https://www.youtube.com/embed/${movie?.officialTrailerId}?autoplay=1&controls=0&rel=0&showinfo=0`}
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        ></iframe>
-      {/* )} */}
+      <iframe
+        className="w-full h-96 bg-black"
+        src={`https://www.youtube.com/embed/${movie?.officialTrailerId}?autoplay=1&controls=0&rel=0&showinfo=0`}
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+      ></iframe>
 
-      
-        <Carousel
-          title="Popular Movies"
-          type="movies"
-          topic="popular"
-          data={popularMovies}
-          isLoading={isLoadingPopularMovies}
-        />
-      
-        <Carousel
-          title="Top rated Movies"
-          type="movies"
-          topic="top_rated"
-          data={topRatedMovies}
-          isLoading={isLoadingTopRatedMovies}
-        />
-      
-        <Carousel
-          title="Popular People"
-          type="people"
-          topic="popular"
-          data={popularPeople}
-          isLoading={isLoadingPopularPeople}
-        />
-      
-        <Carousel
-          title="Popular Tv Shows"
-          type="tv"
-          topic="popular"
-          data={popularTvShows}
-          isLoading={isLoadingPopularTvShows}
-        />
-      
-        <Carousel
-          title="Top rated Tv Shows"
-          type="tv"
-          topic="top_rated"
-          data={topRatedTvShows}
-          isLoading={isLoadingTopRatedTvShows}
-        />
+      <Carousel
+        title="Popular Movies"
+        type="movies"
+        topic="popular"
+        data={popularMovies}
+        isLoading={isLoadingPopularMovies}
+      />
+
+      <Carousel
+        title="Top rated Movies"
+        type="movies"
+        topic="top_rated"
+        data={topRatedMovies}
+        isLoading={isLoadingTopRatedMovies}
+      />
+
+      <Carousel
+        title="Popular People"
+        type="people"
+        topic="popular"
+        data={popularPeople}
+        isLoading={isLoadingPopularPeople}
+      />
+
+      <Carousel
+        title="Popular Tv Shows"
+        type="tv"
+        topic="popular"
+        data={popularTvShows}
+        isLoading={isLoadingPopularTvShows}
+      />
+
+      <Carousel
+        title="Top rated Tv Shows"
+        type="tv"
+        topic="top_rated"
+        data={topRatedTvShows}
+        isLoading={isLoadingTopRatedTvShows}
+      />
     </>
   );
 }

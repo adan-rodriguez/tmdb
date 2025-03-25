@@ -2,7 +2,7 @@ import { getMovie } from "../services/movies";
 import { useQuery } from "@tanstack/react-query";
 
 export function useGetMovie({ id }) {
-  const { isPending, isError, data } = useQuery({
+  const { isLoading, isError, data } = useQuery({
     queryKey: ["movie", id],
     queryFn: async () => await getMovie({ id }),
     refetchOnWindowFocus: false,
@@ -10,7 +10,7 @@ export function useGetMovie({ id }) {
   });
 
   return {
-    isPending,
+    isLoading,
     isError,
     movie: data,
   };
