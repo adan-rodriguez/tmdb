@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useMainSearch } from "../hooks/useMainSearch";
+import { UserMenu } from "./UserMenu";
 
 export function Header() {
   const { search } = useMainSearch();
@@ -38,6 +39,7 @@ export function Header() {
           </button>
         </form>
       </search>
+      <UserMenu />
     </header>
   );
 }
